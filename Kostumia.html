@@ -1,0 +1,1897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kostumia — Wear Once. Loved Again.</title>
+<meta name="description" content="Kostumia — Buy and sell once-worn occasion wear. Sustainable, affordable, elegant.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --white:#ffffff;
+    --black:#0a0a0a;
+    --gold:#c9a961;
+    --gold-dark:#a88a45;
+    --beige:#f5f0e8;
+    --beige-2:#ebe1d0;
+    --gray:#6b6b6b;
+    --gray-light:#e5e5e5;
+    --success:#3a7d44;
+    --danger:#b33a3a;
+    --shadow-sm:0 2px 8px rgba(10,10,10,.06);
+    --shadow-md:0 8px 24px rgba(10,10,10,.08);
+    --shadow-lg:0 20px 60px rgba(10,10,10,.12);
+    --radius:4px;
+    --radius-lg:12px;
+    --transition:all .3s cubic-bezier(.4,0,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    color:var(--black);
+    background:var(--white);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:500;letter-spacing:-.01em}
+  a{color:inherit;text-decoration:none}
+  button{font-family:inherit;cursor:pointer;border:none;background:none}
+  img{max-width:100%;display:block}
+  .container{max-width:1280px;margin:0 auto;padding:0 24px}
+  .gold{color:var(--gold)}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 28px;font-size:14px;font-weight:500;letter-spacing:.08em;
+    text-transform:uppercase;border-radius:var(--radius);
+    transition:var(--transition);cursor:pointer;border:1px solid transparent;
+  }
+  .btn-primary{background:var(--black);color:var(--white)}
+  .btn-primary:hover{background:var(--gold);color:var(--black)}
+  .btn-outline{background:transparent;color:var(--white);border-color:var(--white)}
+  .btn-outline:hover{background:var(--white);color:var(--black)}
+  .btn-gold{background:var(--gold);color:var(--black)}
+  .btn-gold:hover{background:var(--gold-dark);color:var(--white)}
+  .btn-ghost{background:transparent;color:var(--black);border-color:var(--black)}
+  .btn-ghost:hover{background:var(--black);color:var(--white)}
+  .btn-sm{padding:10px 18px;font-size:12px}
+  .section{padding:96px 0}
+  .section-title{text-align:center;margin-bottom:56px}
+  .section-title .eyebrow{
+    display:inline-block;font-size:12px;letter-spacing:.25em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:16px;font-weight:500;
+  }
+  .section-title h2{font-size:clamp(28px,4vw,44px);margin-bottom:16px}
+  .section-title p{color:var(--gray);max-width:600px;margin:0 auto}
+
+  /* ============ HEADER ============ */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(255,255,255,.95);backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(0,0,0,.06);
+    transition:var(--transition);
+  }
+  header.scrolled{box-shadow:var(--shadow-sm)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:80px}
+  .logo{
+    font-family:'Playfair Display',serif;font-size:26px;font-weight:600;
+    letter-spacing:.02em;cursor:pointer;
+  }
+  .logo span{color:var(--gold)}
+  .nav-links{display:flex;align-items:center;gap:36px;list-style:none}
+  .nav-links a{
+    font-size:14px;font-weight:500;letter-spacing:.04em;
+    position:relative;padding:4px 0;transition:var(--transition);
+  }
+  .nav-links a:hover{color:var(--gold)}
+  .nav-links a::after{
+    content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
+    background:var(--gold);transition:var(--transition);
+  }
+  .nav-links a:hover::after{width:100%}
+  .nav-actions{display:flex;align-items:center;gap:20px}
+  .lang-switch{
+    display:flex;align-items:center;gap:6px;padding:6px 12px;
+    border:1px solid var(--gray-light);border-radius:20px;font-size:13px;
+    cursor:pointer;transition:var(--transition);
+  }
+  .lang-switch:hover{border-color:var(--gold)}
+  .lang-switch .active{color:var(--gold);font-weight:600}
+  .icon-btn{
+    width:40px;height:40px;border-radius:50%;display:flex;
+    align-items:center;justify-content:center;transition:var(--transition);
+    position:relative;
+  }
+  .icon-btn:hover{background:var(--beige)}
+  .icon-btn .badge{
+    position:absolute;top:4px;right:4px;background:var(--gold);color:var(--black);
+    font-size:10px;font-weight:700;min-width:18px;height:18px;border-radius:9px;
+    display:flex;align-items:center;justify-content:center;padding:0 4px;
+  }
+  .menu-toggle{display:none;width:40px;height:40px;flex-direction:column;justify-content:center;gap:5px;padding:8px}
+  .menu-toggle span{display:block;width:100%;height:1.5px;background:var(--black);transition:var(--transition)}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;height:100vh;min-height:680px;overflow:hidden;
+    display:flex;align-items:center;
+    background:linear-gradient(135deg,#1a1a1a 0%,#0a0a0a 100%);
+  }
+  .hero-bg{
+    position:absolute;inset:0;
+    background-image:url('https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=1920&q=80');
+    background-size:cover;background-position:center;
+    opacity:.55;
+  }
+  .hero-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(10,10,10,.85) 0%,rgba(10,10,10,.4) 60%,transparent 100%);
+  }
+  .hero-content{position:relative;z-index:2;max-width:640px;color:var(--white)}
+  .hero-eyebrow{
+    display:inline-flex;align-items:center;gap:10px;font-size:12px;
+    letter-spacing:.3em;text-transform:uppercase;margin-bottom:24px;color:var(--gold);
+  }
+  .hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
+  .hero h1{
+    font-size:clamp(36px,6vw,72px);line-height:1.05;margin-bottom:24px;
+    font-weight:500;
+  }
+  .hero h1 em{font-style:italic;color:var(--gold)}
+  .hero p{
+    font-size:clamp(15px,1.4vw,18px);margin-bottom:40px;
+    color:rgba(255,255,255,.85);max-width:520px;line-height:1.7;
+  }
+  .hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+  .hero-stats{
+    position:absolute;bottom:48px;left:24px;right:24px;z-index:2;
+    display:flex;gap:48px;color:var(--white);
+  }
+  .hero-stats .stat{display:flex;flex-direction:column}
+  .hero-stats .stat-num{font-family:'Playfair Display',serif;font-size:32px;color:var(--gold)}
+  .hero-stats .stat-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+  .scroll-indicator{
+    position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+    color:var(--white);font-size:11px;letter-spacing:.3em;text-transform:uppercase;
+    opacity:.6;animation:bounce 2s infinite;
+  }
+  @keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-8px)}}
+
+  /* ============ FEATURED LISTINGS ============ */
+  .listings-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px;
+  }
+  .listing-card{
+    background:var(--white);border-radius:var(--radius-lg);overflow:hidden;
+    transition:var(--transition);cursor:pointer;position:relative;
+  }
+  .listing-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+  .listing-img{
+    position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--beige);
+  }
+  .listing-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .listing-card:hover .listing-img img{transform:scale(1.05)}
+  .listing-tag{
+    position:absolute;top:12px;left:12px;background:var(--white);
+    padding:6px 12px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    border-radius:20px;font-weight:500;
+  }
+  .listing-tag.gold{background:var(--gold);color:var(--black)}
+  .listing-fav{
+    position:absolute;top:12px;right:12px;width:36px;height:36px;
+    background:rgba(255,255,255,.9);border-radius:50%;display:flex;
+    align-items:center;justify-content:center;transition:var(--transition);
+  }
+  .listing-fav:hover{background:var(--white);transform:scale(1.1)}
+  .listing-fav.active svg{fill:var(--danger);stroke:var(--danger)}
+  .listing-body{padding:20px}
+  .listing-cat{font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+  .listing-title{font-family:'Playfair Display',serif;font-size:18px;margin-bottom:8px;line-height:1.3}
+  .listing-meta{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:13px;color:var(--gray)}
+  .listing-price{display:flex;align-items:baseline;gap:8px}
+  .listing-price .current{font-size:20px;font-weight:600;color:var(--black)}
+  .listing-price .original{font-size:13px;text-decoration:line-through;color:var(--gray)}
+  .listing-rating{display:flex;align-items:center;gap:4px;font-size:13px}
+  .listing-rating svg{width:14px;height:14px;fill:var(--gold)}
+
+  /* ============ CATEGORIES ============ */
+  .categories-section{background:var(--beige)}
+  .categories-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;
+  }
+  .category-card{
+    position:relative;aspect-ratio:1/1.2;overflow:hidden;border-radius:var(--radius-lg);
+    cursor:pointer;transition:var(--transition);
+  }
+  .category-card:hover{transform:translateY(-4px)}
+  .category-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+  .category-card:hover img{transform:scale(1.08)}
+  .category-overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 40%,rgba(10,10,10,.85) 100%);
+    display:flex;flex-direction:column;justify-content:flex-end;padding:24px;color:var(--white);
+  }
+  .category-overlay h3{font-size:22px;margin-bottom:4px}
+  .category-overlay span{font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold)}
+
+  /* ============ HOW IT WORKS ============ */
+  .steps-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:48px;
+    position:relative;
+  }
+  .step{text-align:center;position:relative}
+  .step-num{
+    width:72px;height:72px;margin:0 auto 24px;border-radius:50%;
+    background:var(--beige);display:flex;align-items:center;justify-content:center;
+    font-family:'Playfair Display',serif;font-size:28px;color:var(--gold);
+    border:1px solid var(--gold);
+  }
+  .step h3{font-size:22px;margin-bottom:12px}
+  .step p{color:var(--gray);font-size:15px}
+
+  /* ============ WHY CHOOSE ============ */
+  .why-section{background:var(--black);color:var(--white)}
+  .why-section .section-title h2{color:var(--white)}
+  .why-section .section-title p{color:rgba(255,255,255,.7)}
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px}
+  .why-card{
+    padding:32px;border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-lg);
+    transition:var(--transition);
+  }
+  .why-card:hover{border-color:var(--gold);background:rgba(201,169,97,.05)}
+  .why-icon{
+    width:56px;height:56px;border-radius:50%;background:rgba(201,169,97,.15);
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+  }
+  .why-icon svg{width:28px;height:28px;stroke:var(--gold);fill:none;stroke-width:1.5}
+  .why-card h3{font-size:20px;margin-bottom:12px;color:var(--white)}
+  .why-card p{color:rgba(255,255,255,.7);font-size:14px}
+
+  /* ============ TESTIMONIALS ============ */
+  .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px}
+  .testimonial{
+    padding:32px;background:var(--beige);border-radius:var(--radius-lg);
+    position:relative;
+  }
+  .testimonial::before{
+    content:'"';position:absolute;top:16px;right:24px;font-family:'Playfair Display',serif;
+    font-size:80px;color:var(--gold);opacity:.3;line-height:1;
+  }
+  .testimonial-stars{display:flex;gap:2px;margin-bottom:16px}
+  .testimonial-stars svg{width:16px;height:16px;fill:var(--gold)}
+  .testimonial-text{font-size:15px;line-height:1.7;margin-bottom:24px;font-style:italic}
+  .testimonial-author{display:flex;align-items:center;gap:12px}
+  .testimonial-avatar{
+    width:48px;height:48px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;color:var(--white);
+    font-weight:600;font-family:'Playfair Display',serif;
+  }
+  .testimonial-name{font-weight:600;font-size:14px}
+  .testimonial-role{font-size:12px;color:var(--gray)}
+
+  /* ============ NEWSLETTER ============ */
+  .newsletter{
+    background:linear-gradient(135deg,var(--beige) 0%,var(--beige-2) 100%);
+    text-align:center;padding:80px 24px;
+  }
+  .newsletter h2{font-size:clamp(28px,4vw,40px);margin-bottom:16px}
+  .newsletter p{color:var(--gray);margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto}
+  .newsletter-form{
+    display:flex;max-width:500px;margin:0 auto;gap:8px;
+    background:var(--white);padding:6px;border-radius:40px;
+    box-shadow:var(--shadow-md);
+  }
+  .newsletter-form input{
+    flex:1;border:none;outline:none;padding:14px 20px;font-size:14px;
+    background:transparent;font-family:inherit;
+  }
+  .newsletter-form button{
+    padding:14px 28px;background:var(--black);color:var(--white);
+    border-radius:40px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+    transition:var(--transition);
+  }
+  .newsletter-form button:hover{background:var(--gold);color:var(--black)}
+
+  /* ============ FOOTER ============ */
+  footer{background:var(--black);color:rgba(255,255,255,.7);padding:80px 0 24px}
+  .footer-grid{
+    display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;
+  }
+  .footer-brand .logo{color:var(--white);margin-bottom:16px;display:inline-block}
+  .footer-brand p{font-size:14px;margin-bottom:20px;max-width:320px}
+  .footer-social{display:flex;gap:12px}
+  .footer-social a{
+    width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,.15);
+    display:flex;align-items:center;justify-content:center;transition:var(--transition);
+  }
+  .footer-social a:hover{border-color:var(--gold);background:var(--gold);color:var(--black)}
+  .footer-col h4{
+    color:var(--white);font-family:'Inter',sans-serif;font-size:13px;
+    letter-spacing:.15em;text-transform:uppercase;margin-bottom:20px;font-weight:600;
+  }
+  .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px}
+  .footer-col a{font-size:14px;transition:var(--transition)}
+  .footer-col a:hover{color:var(--gold)}
+  .footer-bottom{
+    padding-top:24px;border-top:1px solid rgba(255,255,255,.1);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:13px;
+  }
+
+  /* ============ MODAL ============ */
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(10,10,10,.7);z-index:200;
+    display:none;align-items:center;justify-content:center;padding:20px;
+    backdrop-filter:blur(4px);
+  }
+  .modal-overlay.active{display:flex;animation:fadeIn .3s}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .modal{
+    background:var(--white);border-radius:var(--radius-lg);max-width:520px;width:100%;
+    max-height:90vh;overflow-y:auto;position:relative;animation:slideUp .4s;
+  }
+  .modal-lg{max-width:900px}
+  .modal-xl{max-width:1100px}
+  @keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+  .modal-close{
+    position:absolute;top:16px;right:16px;width:36px;height:36px;border-radius:50%;
+    background:var(--beige);display:flex;align-items:center;justify-content:center;
+    transition:var(--transition);z-index:2;
+  }
+  .modal-close:hover{background:var(--black);color:var(--white)}
+  .modal-header{padding:32px 32px 0;text-align:center}
+  .modal-header h2{font-size:28px;margin-bottom:8px}
+  .modal-header p{color:var(--gray);font-size:14px}
+  .modal-body{padding:32px}
+
+  /* ============ FORMS ============ */
+  .form-group{margin-bottom:20px}
+  .form-label{
+    display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    margin-bottom:8px;font-weight:500;
+  }
+  .form-input,.form-select,.form-textarea{
+    width:100%;padding:14px 16px;border:1px solid var(--gray-light);
+    border-radius:var(--radius);font-family:inherit;font-size:14px;
+    transition:var(--transition);background:var(--white);
+  }
+  .form-input:focus,.form-select:focus,.form-textarea:focus{
+    outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,169,97,.1);
+  }
+  .form-textarea{resize:vertical;min-height:100px}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .form-tabs{display:flex;border-bottom:1px solid var(--gray-light);margin-bottom:24px}
+  .form-tab{
+    flex:1;padding:14px;text-align:center;font-size:13px;letter-spacing:.1em;
+    text-transform:uppercase;font-weight:500;cursor:pointer;transition:var(--transition);
+    border-bottom:2px solid transparent;margin-bottom:-1px;
+  }
+  .form-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+  .form-divider{
+    display:flex;align-items:center;gap:16px;margin:24px 0;color:var(--gray);font-size:12px;
+  }
+  .form-divider::before,.form-divider::after{content:'';flex:1;height:1px;background:var(--gray-light)}
+  .form-link{color:var(--gold);font-weight:500;cursor:pointer}
+  .form-link:hover{text-decoration:underline}
+
+  /* ============ PRODUCT PAGE ============ */
+  .product-layout{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;padding:120px 0 60px}
+  .product-gallery{position:sticky;top:100px;align-self:start}
+  .product-main-img{
+    aspect-ratio:3/4;border-radius:var(--radius-lg);overflow:hidden;
+    background:var(--beige);margin-bottom:12px;
+  }
+  .product-main-img img{width:100%;height:100%;object-fit:cover}
+  .product-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .product-thumb{
+    aspect-ratio:1;border-radius:var(--radius);overflow:hidden;cursor:pointer;
+    border:2px solid transparent;transition:var(--transition);
+  }
+  .product-thumb.active{border-color:var(--gold)}
+  .product-thumb img{width:100%;height:100%;object-fit:cover}
+  .product-info .breadcrumb{
+    font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gray);
+    margin-bottom:16px;
+  }
+  .product-info h1{font-size:36px;margin-bottom:12px;line-height:1.2}
+  .product-seller{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+  .product-seller-avatar{
+    width:40px;height:40px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:600;
+  }
+  .product-seller-info{font-size:13px}
+  .product-seller-info strong{display:block;font-size:14px}
+  .product-price{
+    display:flex;align-items:baseline;gap:12px;margin-bottom:24px;
+    padding-bottom:24px;border-bottom:1px solid var(--gray-light);
+  }
+  .product-price .current{font-size:36px;font-family:'Playfair Display',serif;color:var(--black)}
+  .product-price .original{font-size:18px;text-decoration:line-through;color:var(--gray)}
+  .product-price .discount{
+    background:var(--gold);color:var(--black);padding:4px 10px;border-radius:20px;
+    font-size:12px;font-weight:600;
+  }
+  .product-specs{margin-bottom:24px}
+  .product-spec{
+    display:flex;justify-content:space-between;padding:12px 0;
+    border-bottom:1px solid var(--gray-light);font-size:14px;
+  }
+  .product-spec span:first-child{color:var(--gray);text-transform:uppercase;letter-spacing:.1em;font-size:12px}
+  .product-actions{display:flex;gap:12px;margin-bottom:32px}
+  .product-actions .btn{flex:1}
+  .product-desc h3{font-size:20px;margin-bottom:12px}
+  .product-desc p{color:var(--gray);line-height:1.8;margin-bottom:20px}
+
+  /* ============ DASHBOARD ============ */
+  .dashboard{display:grid;grid-template-columns:260px 1fr;min-height:100vh;padding-top:80px}
+  .dash-sidebar{
+    background:var(--beige);padding:32px 20px;border-right:1px solid var(--gray-light);
+  }
+  .dash-user{
+    text-align:center;padding-bottom:24px;margin-bottom:24px;
+    border-bottom:1px solid rgba(0,0,0,.08);
+  }
+  .dash-avatar{
+    width:80px;height:80px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;color:var(--white);
+    font-family:'Playfair Display',serif;font-size:32px;margin:0 auto 12px;
+  }
+  .dash-user h4{font-family:'Inter',sans-serif;font-size:15px;margin-bottom:4px}
+  .dash-user span{font-size:12px;color:var(--gray)}
+  .dash-nav{list-style:none;display:flex;flex-direction:column;gap:4px}
+  .dash-nav a{
+    display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:var(--radius);
+    font-size:14px;transition:var(--transition);cursor:pointer;
+  }
+  .dash-nav a:hover{background:rgba(0,0,0,.04)}
+  .dash-nav a.active{background:var(--black);color:var(--white)}
+  .dash-nav a svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.5}
+  .dash-content{padding:40px;background:var(--white)}
+  .dash-header{
+    display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;
+    flex-wrap:wrap;gap:16px;
+  }
+  .dash-header h1{font-size:32px}
+  .dash-header p{color:var(--gray);font-size:14px;margin-top:4px}
+  .stat-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:32px}
+  .stat-card{
+    padding:24px;background:var(--white);border:1px solid var(--gray-light);
+    border-radius:var(--radius-lg);
+  }
+  .stat-card .label{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);margin-bottom:8px}
+  .stat-card .value{font-family:'Playfair Display',serif;font-size:32px;margin-bottom:4px}
+  .stat-card .change{font-size:13px;color:var(--success)}
+  .stat-card .change.down{color:var(--danger)}
+  .data-table{width:100%;border-collapse:collapse;background:var(--white);border-radius:var(--radius-lg);overflow:hidden}
+  .data-table th{
+    text-align:left;padding:14px 16px;font-size:12px;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--gray);background:var(--beige);font-weight:500;
+  }
+  .data-table td{padding:16px;border-top:1px solid var(--gray-light);font-size:14px}
+  .data-table tr:hover td{background:var(--beige)}
+  .status{padding:4px 10px;border-radius:20px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+  .status.approved{background:rgba(58,125,68,.12);color:var(--success)}
+  .status.pending{background:rgba(201,169,97,.15);color:var(--gold-dark)}
+  .status.rejected{background:rgba(179,58,58,.12);color:var(--danger)}
+
+  /* ============ PAGES ============ */
+  .page{display:none;padding-top:80px;min-height:100vh}
+  .page.active{display:block}
+  .page-hero{
+    padding:80px 0 48px;text-align:center;background:var(--beige);
+  }
+  .page-hero h1{font-size:clamp(32px,5vw,56px);margin-bottom:12px}
+  .page-hero p{color:var(--gray);max-width:600px;margin:0 auto}
+
+  /* ============ FILTERS ============ */
+  .shop-layout{display:grid;grid-template-columns:260px 1fr;gap:32px;padding:120px 0 60px}
+  .filters{padding:24px;background:var(--beige);border-radius:var(--radius-lg);height:fit-content;position:sticky;top:100px}
+  .filter-group{margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid rgba(0,0,0,.08)}
+  .filter-group:last-child{border-bottom:none;margin-bottom:0}
+  .filter-group h4{font-family:'Inter',sans-serif;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+  .filter-option{
+    display:flex;align-items:center;gap:10px;padding:6px 0;font-size:14px;cursor:pointer;
+  }
+  .filter-option input{accent-color:var(--gold)}
+  .shop-header{
+    display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;
+    flex-wrap:wrap;gap:16px;
+  }
+  .shop-header .count{color:var(--gray);font-size:14px}
+  .sort-select{padding:10px 16px;border:1px solid var(--gray-light);border-radius:var(--radius);font-size:13px}
+
+  /* ============ TOAST ============ */
+  .toast-container{position:fixed;top:100px;right:24px;z-index:300;display:flex;flex-direction:column;gap:12px}
+  .toast{
+    background:var(--black);color:var(--white);padding:16px 20px;border-radius:var(--radius);
+    box-shadow:var(--shadow-lg);min-width:280px;display:flex;align-items:center;gap:12px;
+    animation:slideIn .3s;font-size:14px;
+  }
+  .toast.success{border-left:4px solid var(--success)}
+  .toast.error{border-left:4px solid var(--danger)}
+  .toast.info{border-left:4px solid var(--gold)}
+  @keyframes slideIn{from{transform:translateX(100%);opacity:0}to{transform:translateX(0);opacity:1}}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:960px){
+    .nav-links{display:none}
+    .menu-toggle{display:flex}
+    .nav-links.mobile-open{
+      display:flex;position:absolute;top:80px;left:0;right:0;background:var(--white);
+      flex-direction:column;padding:24px;gap:16px;border-bottom:1px solid var(--gray-light);
+    }
+    .hero-stats{flex-wrap:wrap;gap:24px}
+    .product-layout,.shop-layout,.dashboard{grid-template-columns:1fr}
+    .product-gallery,.filters,.dash-sidebar{position:static}
+    .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
+    .form-row{grid-template-columns:1fr}
+  }
+  @media (max-width:600px){
+    .section{padding:64px 0}
+    .hero{min-height:600px}
+    .hero-cta{flex-direction:column;width:100%}
+    .hero-cta .btn{width:100%}
+    .footer-grid{grid-template-columns:1fr}
+    .newsletter-form{flex-direction:column;border-radius:var(--radius-lg);background:transparent;box-shadow:none;padding:0}
+    .newsletter-form input{background:var(--white);border-radius:var(--radius);margin-bottom:8px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="header">
+  <div class="container">
+    <nav class="nav">
+      <div class="logo" onclick="navigate('home')">Kostu<span>mia</span></div>
+      <ul class="nav-links" id="navLinks">
+        <li><a onclick="navigate('home')" data-i18n="nav.home">Home</a></li>
+        <li><a onclick="navigate('shop')" data-i18n="nav.shop">Shop</a></li>
+        <li><a onclick="navigate('sell')" data-i18n="nav.sell">Sell</a></li>
+        <li><a onclick="navigate('about')" data-i18n="nav.about">About</a></li>
+        <li><a onclick="navigate('contact')" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <div class="lang-switch" onclick="toggleLang()">
+          <span id="langEn" class="active">EN</span>
+          <span>/</span>
+          <span id="langSw">SW</span>
+        </div>
+        <button class="icon-btn" onclick="navigate('wishlist')" title="Wishlist">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          <span class="badge" id="wishlistCount">0</span>
+        </button>
+        <button class="icon-btn" onclick="navigate('cart')" title="Cart">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          <span class="badge" id="cartCount">0</span>
+        </button>
+        <button class="btn btn-primary btn-sm" id="authBtn" onclick="openAuth()" data-i18n="nav.login">Sign In</button>
+        <button class="menu-toggle" onclick="toggleMobileMenu()">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HOME PAGE ============ -->
+<main id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-eyebrow" data-i18n="hero.eyebrow">Sustainable Fashion</div>
+        <h1 data-i18n-html="hero.title">Give Your Outfit a <em>Second Life</em></h1>
+        <p data-i18n="hero.subtitle">Buy and sell once-worn occasion wear with ease. Save money while promoting sustainable fashion.</p>
+        <div class="hero-cta">
+          <button class="btn btn-gold" onclick="navigate('shop')" data-i18n="hero.cta1">Shop Now</button>
+          <button class="btn btn-outline" onclick="navigate('sell')" data-i18n="hero.cta2">Sell Your Outfit</button>
+        </div>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">12K+</span><span class="stat-label" data-i18n="hero.stat1">Happy Customers</span></div>
+      <div class="stat"><span class="stat-num">8K+</span><span class="stat-label" data-i18n="hero.stat2">Outfits Listed</span></div>
+      <div class="stat"><span class="stat-num">98%</span><span class="stat-label" data-i18n="hero.stat3">Satisfaction</span></div>
+    </div>
+    <div class="scroll-indicator" data-i18n="hero.scroll">Scroll</div>
+  </section>
+
+  <!-- FEATURED LISTINGS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow" data-i18n="featured.eyebrow">Curated Selection</span>
+        <h2 data-i18n="featured.title">Featured Listings</h2>
+        <p data-i18n="featured.subtitle">Hand-picked occasion wear, ready for their next celebration.</p>
+      </div>
+      <div class="listings-grid" id="featuredGrid"></div>
+      <div style="text-align:center;margin-top:48px">
+        <button class="btn btn-ghost" onclick="navigate('shop')" data-i18n="featured.viewAll">View All Listings</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section categories-section">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow" data-i18n="cat.eyebrow">Browse by Style</span>
+        <h2 data-i18n="cat.title">Shop Categories</h2>
+        <p data-i18n="cat.subtitle">Find the perfect outfit for every special moment.</p>
+      </div>
+      <div class="categories-grid" id="categoriesGrid"></div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow" data-i18n="how.eyebrow">Simple Process</span>
+        <h2 data-i18n="how.title">How Kostumia Works</h2>
+        <p data-i18n="how.subtitle">A seamless experience for buyers and sellers.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3 data-i18n="how.s1.title">List Your Outfit</h3>
+          <p data-i18n="how.s1.desc">Sellers submit their outfits with photos, details, and pricing.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3 data-i18n="how.s2.title">We Review & Approve</h3>
+          <p data-i18n="how.s2.desc">Our team verifies quality and uploads approved listings.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3 data-i18n="how.s3.title">Buyers Shop Securely</h3>
+          <p data-i18n="how.s3.desc">Customers purchase with confidence through our secure platform.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <h3 data-i18n="how.s4.title">Get Paid</h3>
+          <p data-i18n="how.s4.desc">We deduct a small commission and pay the rest to the seller.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY CHOOSE -->
+  <section class="section why-section">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow" data-i18n="why.eyebrow">The Kostumia Promise</span>
+        <h2 data-i18n="why.title">Why Choose Kostumia</h2>
+        <p data-i18n="why.subtitle">Built on trust, sustainability, and style.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2L3 7v6c0 5 3.5 9.5 9 11 5.5-1.5 9-6 9-11V7l-9-5z"/></svg></div>
+          <h3 data-i18n="why.c1.title">Verified Quality</h3>
+          <p data-i18n="why.c1.desc">Every listing is reviewed to ensure authenticity and condition.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3 data-i18n="why.c2.title">Sustainable Fashion</h3>
+          <p data-i18n="why.c2.desc">Give beautiful outfits a second life and reduce fashion waste.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3 data-i18n="why.c3.title">Secure Payments</h3>
+          <p data-i18n="why.c3.desc">Funds held safely until delivery is confirmed. Mobile money, cards, and bank transfers.</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/></svg></div>
+          <h3 data-i18n="why.c4.title">Fair Pricing</h3>
+          <p data-i18n="why.c4.desc">Transparent commission. Sellers keep most of what they earn.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <span class="eyebrow" data-i18n="test.eyebrow">Loved by Many</span>
+        <h2 data-i18n="test.title">What Our Customers Say</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+          </div>
+          <p class="testimonial-text" data-i18n="test.t1.text">"I sold my wedding dress within a week! The process was simple and I got a fair price. Highly recommended."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AM</div>
+            <div><div class="testimonial-name">Amina M.</div><div class="testimonial-role" data-i18n="test.t1.role">Seller, Dar es Salaam</div></div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+          </div>
+          <p class="testimonial-text" data-i18n="test.t2.text">"Found a stunning bridesmaid dress at half the retail price. The quality was exactly as described. Amazing platform!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JK</div>
+            <div><div class="testimonial-name">Joy K.</div><div class="testimonial-role" data-i18n="test.t2.role">Buyer, Nairobi</div></div>
+          </div>
+        </div>
+        <div class="testimonial">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15 8.5 22 9.3 17 14 18.2 21 12 17.8 5.8 21 7 14 2 9.3 9 8.5 12 2"/></svg>
+          </div>
+          <p class="testimonial-text" data-i18n="test.t3.text">"I love that I can support sustainable fashion while looking elegant. The bilingual feature is a wonderful touch for our community."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">FO</div>
+            <div><div class="testimonial-name">Fatuma O.</div><div class="testimonial-role" data-i18n="test.t3.role">Buyer, Mombasa</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+    <h2 data-i18n="news.title">Stay in Style</h2>
+    <p data-i18n="news.subtitle">Subscribe for new listings, style tips, and exclusive offers.</p>
+    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+      <input type="email" required placeholder="your@email.com" data-i18n-ph="news.placeholder">
+      <button type="submit" data-i18n="news.btn">Subscribe</button>
+    </form>
+  </section>
+</main>
+
+<!-- ============ SHOP PAGE ============ -->
+<div id="page-shop" class="page">
+  <div class="container">
+    <div class="shop-layout">
+      <aside class="filters">
+        <div class="filter-group">
+          <h4 data-i18n="filter.search">Search</h4>
+          <input type="text" class="form-input" id="searchInput" data-i18n-ph="filter.searchPh" placeholder="Search outfits...">
+        </div>
+        <div class="filter-group">
+          <h4 data-i18n="filter.category">Category</h4>
+          <label class="filter-option"><input type="checkbox" value="all" checked> <span data-i18n="filter.all">All</span></label>
+          <label class="filter-option"><input type="checkbox" value="wedding"> <span data-i18n="cat.wedding">Wedding Dresses</span></label>
+          <label class="filter-option"><input type="checkbox" value="bridesmaid"> <span data-i18n="cat.bridesmaid">Bridesmaid Dresses</span></label>
+          <label class="filter-option"><input type="checkbox" value="suits"> <span data-i18n="cat.suits">Suits</span></label>
+          <label class="filter-option"><input type="checkbox" value="traditional"> <span data-i18n="cat.traditional">Traditional Wear</span></label>
+          <label class="filter-option"><input type="checkbox" value="graduation"> <span data-i18n="cat.graduation">Graduation Outfits</span></label>
+          <label class="filter-option"><input type="checkbox" value="party"> <span data-i18n="cat.party">Party Wear</span></label>
+        </div>
+        <div class="filter-group">
+          <h4 data-i18n="filter.size">Size</h4>
+          <label class="filter-option"><input type="checkbox"> XS</label>
+          <label class="filter-option"><input type="checkbox"> S</label>
+          <label class="filter-option"><input type="checkbox"> M</label>
+          <label class="filter-option"><input type="checkbox"> L</label>
+          <label class="filter-option"><input type="checkbox"> XL</label>
+        </div>
+        <div class="filter-group">
+          <h4 data-i18n="filter.price">Price Range</h4>
+          <label class="filter-option"><input type="checkbox"> <span data-i18n="filter.p1">Under $50</span></label>
+          <label class="filter-option"><input type="checkbox"> <span data-i18n="filter.p2">$50 - $150</span></label>
+          <label class="filter-option"><input type="checkbox"> <span data-i18n="filter.p3">$150 - $300</span></label>
+          <label class="filter-option"><input type="checkbox"> <span data-i18n="filter.p4">Over $300</span></label>
+        </div>
+        <div class="filter-group">
+          <h4 data-i18n="filter.condition">Condition</h4>
+          <label class="filter-option"><input type="checkbox"> <span data-i18n="cond.new">Like New</span></label>
+          <label class="filter-option"><input type="checkbox"> <span data-i18n="cond.good">Good</span></label>
+          <label class="filter-option"><input type="checkbox"> <span data-i18n="cond.fair">Fair</span></label>
+        </div>
+        <button class="btn btn-primary" style="width:100%" onclick="applyFilters()" data-i18n="filter.apply">Apply Filters</button>
+      </aside>
+      <div>
+        <div class="shop-header">
+          <div>
+            <h1 style="font-size:28px;margin-bottom:4px" data-i18n="shop.title">All Outfits</h1>
+            <div class="count"><span id="resultCount">0</span> <span data-i18n="shop.items">items found</span></div>
+          </div>
+          <select class="sort-select" id="sortSelect" onchange="applyFilters()">
+            <option value="featured" data-i18n="sort.featured">Sort: Featured</option>
+            <option value="low" data-i18n="sort.low">Price: Low to High</option>
+            <option value="high" data-i18n="sort.high">Price: High to Low</option>
+            <option value="new" data-i18n="sort.new">Newest First</option>
+          </select>
+        </div>
+        <div class="listings-grid" id="shopGrid"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SELL PAGE ============ -->
+<div id="page-sell" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <h1 data-i18n="sell.title">Sell Your Outfit</h1>
+      <p data-i18n="sell.subtitle">Turn your once-worn occasion wear into cash. Simple, fast, and fair.</p>
+    </div>
+  </div>
+  <div class="container" style="padding:48px 24px">
+    <div style="max-width:720px;margin:0 auto">
+      <form onsubmit="submitListing(event)">
+        <div class="form-group">
+          <label class="form-label" data-i18n="sell.photos">Photos</label>
+          <div style="border:2px dashed var(--gray-light);border-radius:var(--radius-lg);padding:48px;text-align:center;cursor:pointer" onclick="document.getElementById('photoUpload').click()">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" style="margin:0 auto 12px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+            <p style="font-weight:500;margin-bottom:4px" data-i18n="sell.upload">Click to upload photos</p>
+            <p style="font-size:13px;color:var(--gray)" data-i18n="sell.uploadHint">Up to 8 photos, JPG or PNG</p>
+            <input type="file" id="photoUpload" multiple accept="image/*" hidden>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="sell.titleLabel">Title</label>
+          <input type="text" class="form-input" required data-i18n-ph="sell.titlePh" placeholder="e.g., Ivory Silk Wedding Gown">
+        </div>
+        <div class="form-group">
+          <label class="form-label" data-i18n="sell.desc">Description</label>
+          <textarea class="form-textarea" required data-i18n-ph="sell.descPh" placeholder="Describe the outfit, condition, and any special details..."></textarea>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" data-i18n="sell.category">Category</label>
+            <select class="form-select" required>
+              <option value="" data-i18n="sell.selectCat">Select category</option>
+              <option data-i18n="cat.wedding">Wedding Dresses</option>
+              <option data-i18n="cat.bridesmaid">Bridesmaid Dresses</option>
+              <option data-i18n="cat.suits">Suits</option>
+              <option data-i18n="cat.traditional">Traditional Wear</option>
+              <option data-i18n="cat.graduation">Graduation Outfits</option>
+              <option data-i18n="cat.party">Party Wear</option>
+              <option data-i18n="cat.costumes">Costumes</option>
+              <option data-i18n="cat.shoes">Shoes</option>
+              <option data-i18n="cat.bags">Bags</option>
+              <option data-i18n="cat.accessories">Accessories</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="sell.condition">Condition</label>
+            <select class="form-select" required>
+              <option data-i18n="cond.new">Like New</option>
+              <option data-i18n="cond.good">Good</option>
+              <option data-i18n="cond.fair">Fair</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" data-i18n="sell.size">Size</label>
+            <select class="form-select" required>
+              <option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="sell.color">Color</label>
+            <input type="text" class="form-input" required data-i18n-ph="sell.colorPh" placeholder="e.g., Ivory, Gold">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" data-i18n="sell.original">Original Price ($)</label>
+            <input type="number" class="form-input" required placeholder="500">
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="sell.selling">Selling Price ($)</label>
+            <input type="number" class="form-input" required placeholder="250">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" data-i18n="sell.location">Location</label>
+            <input type="text" class="form-input" required data-i18n-ph="sell.locationPh" placeholder="e.g., Dar es Salaam">
+          </div>
+          <div class="form-group">
+            <label class="form-label" data-i18n="sell.delivery">Delivery Options</label>
+            <select class="form-select">
+              <option data-i18n="sell.pickup">Pickup Only</option>
+              <option data-i18n="sell.ship">Shipping Available</option>
+              <option data-i18n="sell.both">Both</option>
+            </select>
+          </div>
+        </div>
+        <div style="background:var(--beige);padding:20px;border-radius:var(--radius-lg);margin-bottom:24px;font-size:13px;color:var(--gray)">
+          <strong style="color:var(--black)" data-i18n="sell.note">Note:</strong> <span data-i18n="sell.noteText">Kostumia charges a 15% commission on successful sales. You'll receive the remaining amount after the buyer confirms delivery.</span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%" data-i18n="sell.submit">Submit for Review</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ABOUT PAGE ============ -->
+<div id="page-about" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <h1 data-i18n="about.title">About Kostumia</h1>
+      <p data-i18n="about.subtitle">Wear Once. Loved Again. / Vaa Mara Moja. Pendwa Tena.</p>
+    </div>
+  </div>
+  <div class="container" style="padding:64px 24px;max-width:800px">
+    <h2 style="font-size:28px;margin-bottom:20px" data-i18n="about.story">Our Story</h2>
+    <p style="color:var(--gray);line-height:1.9;margin-bottom:24px" data-i18n="about.p1">Kostumia was born from a simple idea: beautiful occasion wear deserves more than one moment in the spotlight. Every wedding dress, graduation gown, and traditional outfit tells a story — and those stories shouldn't end after a single event.</p>
+    <p style="color:var(--gray);line-height:1.9;margin-bottom:24px" data-i18n="about.p2">We connect sellers who want to give their outfits a second life with buyers looking for quality, affordable occasion wear. It's sustainable fashion that celebrates culture, style, and community.</p>
+    <h2 style="font-size:28px;margin-bottom:20px;margin-top:48px" data-i18n="about.mission">Our Mission</h2>
+    <p style="color:var(--gray);line-height:1.9" data-i18n="about.p3">To make sustainable fashion accessible, elegant, and joyful — in both English and Kiswahili, for every community we serve.</p>
+  </div>
+</div>
+
+<!-- ============ CONTACT PAGE ============ -->
+<div id="page-contact" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <h1 data-i18n="contact.title">Get in Touch</h1>
+      <p data-i18n="contact.subtitle">We'd love to hear from you.</p>
+    </div>
+  </div>
+  <div class="container" style="padding:64px 24px;max-width:600px">
+    <form onsubmit="submitContact(event)">
+      <div class="form-group">
+        <label class="form-label" data-i18n="contact.name">Your Name</label>
+        <input type="text" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="contact.email">Email</label>
+        <input type="email" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="contact.subject">Subject</label>
+        <input type="text" class="form-input" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" data-i18n="contact.message">Message</label>
+        <textarea class="form-textarea" required style="min-height:150px"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" style="width:100%" data-i18n="contact.send">Send Message</button>
+    </form>
+  </div>
+</div>
+
+<!-- ============ WISHLIST PAGE ============ -->
+<div id="page-wishlist" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <h1 data-i18n="wish.title">Your Wishlist</h1>
+      <p data-i18n="wish.subtitle">Items you've saved for later.</p>
+    </div>
+  </div>
+  <div class="container" style="padding:48px 24px">
+    <div class="listings-grid" id="wishlistGrid"></div>
+    <div id="wishlistEmpty" style="text-align:center;padding:64px 0;color:var(--gray);display:none">
+      <p data-i18n="wish.empty">Your wishlist is empty.</p>
+      <button class="btn btn-primary" style="margin-top:20px" onclick="navigate('shop')" data-i18n="wish.browse">Browse Listings</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CART PAGE ============ -->
+<div id="page-cart" class="page">
+  <div class="page-hero">
+    <div class="container">
+      <h1 data-i18n="cart.title">Shopping Cart</h1>
+    </div>
+  </div>
+  <div class="container" style="padding:48px 24px">
+    <div id="cartItems"></div>
+    <div id="cartEmpty" style="text-align:center;padding:64px 0;color:var(--gray);display:none">
+      <p data-i18n="cart.empty">Your cart is empty.</p>
+      <button class="btn btn-primary" style="margin-top:20px" onclick="navigate('shop')" data-i18n="cart.browse">Start Shopping</button>
+    </div>
+    <div id="cartSummary" style="display:none;max-width:400px;margin-left:auto;padding:24px;background:var(--beige);border-radius:var(--radius-lg)">
+      <div style="display:flex;justify-content:space-between;margin-bottom:12px"><span data-i18n="cart.subtotal">Subtotal</span><strong id="cartSubtotal">$0</strong></div>
+      <div style="display:flex;justify-content:space-between;margin-bottom:12px;color:var(--gray);font-size:14px"><span data-i18n="cart.fee">Service Fee</span><span id="cartFee">$0</span></div>
+      <div style="display:flex;justify-content:space-between;padding-top:12px;border-top:1px solid rgba(0,0,0,.1);font-size:18px"><strong data-i18n="cart.total">Total</strong><strong id="cartTotal">$0</strong></div>
+      <button class="btn btn-primary" style="width:100%;margin-top:20px" onclick="checkout()" data-i18n="cart.checkout">Proceed to Checkout</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ DASHBOARD PAGE ============ -->
+<div id="page-dashboard" class="page">
+  <div class="dashboard">
+    <aside class="dash-sidebar">
+      <div class="dash-user">
+        <div class="dash-avatar" id="dashAvatar">U</div>
+        <h4 id="dashName">User</h4>
+        <span id="dashEmail">user@email.com</span>
+      </div>
+      <ul class="dash-nav">
+        <li><a class="active" onclick="showDashTab('overview',this)" data-i18n="dash.overview"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Overview</a></li>
+        <li><a onclick="showDashTab('listings',this)" data-i18n="dash.listings"><svg viewBox="0 0 24 24"><path d="M20 7h-3V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v3H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1z"/></svg>My Listings</a></li>
+        <li><a onclick="showDashTab('orders',this)" data-i18n="dash.orders"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4zM3 6h18M16 10a4 4 0 0 1-8 0"/></svg>Orders</a></li>
+        <li><a onclick="showDashTab('earnings',this)" data-i18n="dash.earnings"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Earnings</a></li>
+        <li><a onclick="showDashTab('messages',this)" data-i18n="dash.messages"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>Messages</a></li>
+        <li><a onclick="showDashTab('profile',this)" data-i18n="dash.profile"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profile</a></li>
+        <li><a onclick="logout()" style="color:var(--danger)" data-i18n="dash.logout"><svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg>Logout</a></li>
+      </ul>
+    </aside>
+    <div class="dash-content">
+      <div id="dashTab-overview">
+        <div class="dash-header">
+          <div>
+            <h1 data-i18n="dash.welcome">Welcome back!</h1>
+            <p data-i18n="dash.welcomeSub">Here's what's happening with your account.</p>
+          </div>
+          <button class="btn btn-primary" onclick="navigate('sell')" data-i18n="dash.addListing">+ Add Listing</button>
+        </div>
+        <div class="stat-cards">
+          <div class="stat-card"><div class="label" data-i18n="dash.totalSales">Total Sales</div><div class="value">$1,240</div><div class="change">↑ 12% <span data-i18n="dash.thisMonth">this month</span></div></div>
+          <div class="stat-card"><div class="label" data-i18n="dash.activeListings">Active Listings</div><div class="value">8</div><div class="change">↑ 2 <span data-i18n="dash.new">new</span></div></div>
+          <div class="stat-card"><div class="label" data-i18n="dash.views">Views</div><div class="value">3,482</div><div class="change">↑ 24%</div></div>
+          <div class="stat-card"><div class="label" data-i18n="dash.rating">Rating</div><div class="value">4.9 ★</div><div class="change" data-i18n="dash.basedOn">Based on 42 reviews</div></div>
+        </div>
+        <h3 style="font-size:20px;margin-bottom:16px" data-i18n="dash.recent">Recent Activity</h3>
+        <table class="data-table">
+          <thead><tr>
+            <th data-i18n="dash.item">Item</th>
+            <th data-i18n="dash.type">Type</th>
+            <th data-i18n="dash.amount">Amount</th>
+            <th data-i18n="dash.status">Status</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Ivory Silk Gown</td><td data-i18n="dash.sale">Sale</td><td>$280</td><td><span class="status approved" data-i18n="status.completed">Completed</span></td></tr>
+            <tr><td>Gold Bridesmaid Dress</td><td data-i18n="dash.sale">Sale</td><td>$120</td><td><span class="status pending" data-i18n="status.processing">Processing</span></td></tr>
+            <tr><td>Traditional Kanga Set</td><td data-i18n="dash.listing">Listing</td><td>$85</td><td><span class="status approved" data-i18n="status.approved">Approved</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="dashTab-listings" style="display:none">
+        <div class="dash-header">
+          <div><h1 data-i18n="dash.myListings">My Listings</h1><p data-i18n="dash.myListingsSub">Manage your items for sale.</p></div>
+          <button class="btn btn-primary" onclick="navigate('sell')" data-i18n="dash.addListing">+ Add Listing</button>
+        </div>
+        <table class="data-table">
+          <thead><tr>
+            <th data-i18n="dash.item">Item</th>
+            <th data-i18n="dash.price">Price</th>
+            <th data-i18n="dash.views">Views</th>
+            <th data-i18n="dash.status">Status</th>
+            <th data-i18n="dash.actions">Actions</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Ivory Silk Gown</td><td>$280</td><td>248</td><td><span class="status approved" data-i18n="status.active">Active</span></td><td><button class="btn btn-sm btn-ghost" data-i18n="dash.edit">Edit</button></td></tr>
+            <tr><td>Gold Bridesmaid Dress</td><td>$120</td><td>156</td><td><span class="status approved" data-i18n="status.active">Active</span></td><td><button class="btn btn-sm btn-ghost" data-i18n="dash.edit">Edit</button></td></tr>
+            <tr><td>Velvet Party Dress</td><td>$95</td><td>89</td><td><span class="status pending" data-i18n="status.pending">Pending</span></td><td><button class="btn btn-sm btn-ghost" data-i18n="dash.edit">Edit</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="dashTab-orders" style="display:none">
+        <div class="dash-header"><div><h1 data-i18n="dash.orders">Orders</h1><p data-i18n="dash.ordersSub">Track your purchases and sales.</p></div></div>
+        <table class="data-table">
+          <thead><tr>
+            <th data-i18n="dash.orderId">Order ID</th>
+            <th data-i18n="dash.item">Item</th>
+            <th data-i18n="dash.date">Date</th>
+            <th data-i18n="dash.amount">Amount</th>
+            <th data-i18n="dash.status">Status</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>#KST-2041</td><td>Emerald Evening Gown</td><td>Jul 14, 2026</td><td>$220</td><td><span class="status approved" data-i18n="status.delivered">Delivered</span></td></tr>
+            <tr><td>#KST-2038</td><td>Classic Black Suit</td><td>Jul 10, 2026</td><td>$180</td><td><span class="status pending" data-i18n="status.shipped">Shipped</span></td></tr>
+            <tr><td>#KST-2031</td><td>Traditional Bukusu Outfit</td><td>Jul 2, 2026</td><td>$95</td><td><span class="status approved" data-i18n="status.delivered">Delivered</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="dashTab-earnings" style="display:none">
+        <div class="dash-header"><div><h1 data-i18n="dash.earnings">Earnings</h1><p data-i18n="dash.earningsSub">Your sales and payouts.</p></div><button class="btn btn-gold" data-i18n="dash.requestPayout">Request Payout</button></div>
+        <div class="stat-cards">
+          <div class="stat-card"><div class="label" data-i18n="dash.totalEarned">Total Earned</div><div class="value">$1,240</div></div>
+          <div class="stat-card"><div class="label" data-i18n="dash.available">Available</div><div class="value">$380</div></div>
+          <div class="stat-card"><div class="label" data-i18n="dash.commission">Commission (15%)</div><div class="value">$219</div></div>
+          <div class="stat-card"><div class="label" data-i18n="dash.paidOut">Paid Out</div><div class="value">$860</div></div>
+        </div>
+      </div>
+      <div id="dashTab-messages" style="display:none">
+        <div class="dash-header"><div><h1 data-i18n="dash.messages">Messages</h1></div></div>
+        <div style="background:var(--beige);padding:48px;text-align:center;border-radius:var(--radius-lg)">
+          <p data-i18n="dash.noMsg">No messages yet.</p>
+        </div>
+      </div>
+      <div id="dashTab-profile" style="display:none">
+        <div class="dash-header"><div><h1 data-i18n="dash.profile">Profile</h1><p data-i18n="dash.profileSub">Update your account details.</p></div></div>
+        <form onsubmit="updateProfile(event)" style="max-width:500px">
+          <div style="text-align:center;margin-bottom:32px">
+            <div class="dash-avatar" style="width:100px;height:100px;font-size:40px;margin:0 auto 12px" id="profileAvatar">U</div>
+            <button type="button" class="btn btn-sm btn-ghost" data-i18n="dash.changePhoto">Change Photo</button>
+          </div>
+          <div class="form-group"><label class="form-label" data-i18n="auth.name">Full Name</label><input type="text" class="form-input" id="profileName" required></div>
+          <div class="form-group"><label class="form-label" data-i18n="auth.email">Email</label><input type="email" class="form-input" id="profileEmail" required></div>
+          <div class="form-group"><label class="form-label" data-i18n="auth.phone">Phone</label><input type="tel" class="form-input" id="profilePhone"></div>
+          <div class="form-group"><label class="form-label" data-i18n="sell.location">Location</label><input type="text" class="form-input" id="profileLocation"></div>
+          <button type="submit" class="btn btn-primary" data-i18n="dash.save">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ ADMIN PAGE ============ -->
+<div id="page-admin" class="page">
+  <div class="dashboard">
+    <aside class="dash-sidebar">
+      <div class="dash-user">
+        <div class="dash-avatar" style="background:var(--black)">A</div>
+        <h4>Admin</h4>
+        <span>admin@kostumia.com</span>
+      </div>
+      <ul class="dash-nav">
+        <li><a class="active" onclick="showAdminTab('overview',this)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> <span data-i18n="admin.overview">Overview</span></a></li>
+        <li><a onclick="showAdminTab('listings',this)"><svg viewBox="0 0 24 24"><path d="M20 7h-3V4a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v3H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V8a1 1 0 0 0-1-1z"/></svg> <span data-i18n="admin.listings">Listings</span></a></li>
+        <li><a onclick="showAdminTab('users',this)"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg> <span data-i18n="admin.users">Users</span></a></li>
+        <li><a onclick="showAdminTab('payouts',this)"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> <span data-i18n="admin.payouts">Payouts</span></a></li>
+        <li><a onclick="showAdminTab('settings',this)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg> <span data-i18n="admin.settings">Settings</span></a></li>
+      </ul>
+    </aside>
+    <div class="dash-content">
+      <div id="adminTab-overview">
+        <div class="dash-header"><div><h1 data-i18n="admin.dashboard">Admin Dashboard</h1><p data-i18n="admin.dashboardSub">Platform overview and analytics.</p></div></div>
+        <div class="stat-cards">
+          <div class="stat-card"><div class="label" data-i18n="admin.totalRevenue">Total Revenue</div><div class="value">$48,920</div><div class="change">↑ 18%</div></div>
+          <div class="stat-card"><div class="label" data-i18n="admin.commission">Commission Earned</div><div class="value">$7,338</div><div class="change">↑ 15%</div></div>
+          <div class="stat-card"><div class="label" data-i18n="admin.activeUsers">Active Users</div><div class="value">2,841</div><div class="change">↑ 240 <span data-i18n="dash.thisMonth">this month</span></div></div>
+          <div class="stat-card"><div class="label" data-i18n="admin.pending">Pending Approval</div><div class="value">14</div><div class="change down" data-i18n="admin.needsReview">Needs review</div></div>
+        </div>
+      </div>
+      <div id="adminTab-listings" style="display:none">
+        <div class="dash-header"><div><h1 data-i18n="admin.manageListings">Manage Listings</h1></div></div>
+        <table class="data-table">
+          <thead><tr>
+            <th data-i18n="dash.item">Item</th>
+            <th data-i18n="auth.seller">Seller</th>
+            <th data-i18n="dash.price">Price</th>
+            <th data-i18n="dash.status">Status</th>
+            <th data-i18n="dash.actions">Actions</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Royal Blue Gown</td><td>Sarah M.</td><td>$320</td><td><span class="status pending" data-i18n="status.pending">Pending</span></td><td><button class="btn btn-sm btn-gold" data-i18n="admin.approve">Approve</button> <button class="btn btn-sm btn-ghost" data-i18n="admin.reject">Reject</button></td></tr>
+            <tr><td>White Tuxedo</td><td>John K.</td><td>$180</td><td><span class="status pending" data-i18n="status.pending">Pending</span></td><td><button class="btn btn-sm btn-gold" data-i18n="admin.approve">Approve</button> <button class="btn btn-sm btn-ghost" data-i18n="admin.reject">Reject</button></td></tr>
+            <tr><td>Ankara Party Dress</td><td>Grace O.</td><td>$75</td><td><span class="status approved" data-i18n="status.active">Active</span></td><td><button class="btn btn-sm btn-ghost" data-i18n="admin.remove">Remove</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="adminTab-users" style="display:none">
+        <div class="dash-header"><div><h1 data-i18n="admin.manageUsers">Manage Users</h1></div></div>
+        <table class="data-table">
+          <thead><tr>
+            <th data-i18n="auth.name">Name</th>
+            <th data-i18n="auth.email">Email</th>
+            <th data-i18n="admin.role">Role</th>
+            <th data-i18n="admin.joined">Joined</th>
+            <th data-i18n="dash.actions">Actions</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Amina M.</td><td>amina@mail.com</td><td data-i18n="auth.seller">Seller</td><td>Jun 2026</td><td><button class="btn btn-sm btn-ghost" data-i18n="admin.view">View</button></td></tr>
+            <tr><td>Joy K.</td><td>joy@mail.com</td><td data-i18n="auth.buyer">Buyer</td><td>Jul 2026</td><td><button class="btn btn-sm btn-ghost" data-i18n="admin.view">View</button></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="adminTab-payouts" style="display:none">
+        <div class="dash-header"><div><h1 data-i18n="admin.managePayouts">Manage Payouts</h1></div></div>
+        <table class="data-table">
+          <thead><tr>
+            <th data-i18n="auth.seller">Seller</th>
+            <th data-i18n="dash.amount">Amount</th>
+            <th data-i18n="admin.method">Method</th>
+            <th data-i18n="dash.status">Status</th>
+            <th data-i18n="dash.actions">Actions</th>
+          </tr></thead>
+          <tbody>
+            <tr><td>Amina M.</td><td>$280</td><td data-i18n="pay.mobile">Mobile Money</td><td><span class="status pending" data-i18n="status.pending">Pending</span></td><td><button class="btn btn-sm btn-gold" data-i18n="admin.release">Release</button></td></tr>
+            <tr><td>Grace O.</td><td>$140</td><td data-i18n="pay.bank">Bank Transfer</td><td><span class="status approved" data-i18n="status.completed">Completed</span></td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div id="adminTab-settings" style="display:none">
+        <div class="dash-header"><div><h1 data-i18n="admin.platformSettings">Platform Settings</h1></div></div>
+        <form onsubmit="saveSettings(event)" style="max-width:500px">
+          <div class="form-group"><label class="form-label" data-i18n="admin.commissionRate">Commission Rate (%)</label><input type="number" class="form-input" value="15" required></div>
+          <div class="form-group"><label class="form-label" data-i18n="admin.platformName">Platform Name</label><input type="text" class="form-input" value="Kostumia" required></div>
+          <div class="form-group"><label class="form-label" data-i18n="admin.supportEmail">Support Email</label><input type="email" class="form-input" value="support@kostumia.com" required></div>
+          <button type="submit" class="btn btn-primary" data-i18n="dash.save">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Kostu<span>mia</span></div>
+        <p data-i18n="footer.tagline">Wear Once. Loved Again. Sustainable occasion wear for every celebration.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37zM17.5 6.5h.01"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.shop">Shop</h4>
+        <ul>
+          <li><a onclick="navigate('shop')" data-i18n="cat.wedding">Wedding Dresses</a></li>
+          <li><a onclick="navigate('shop')" data-i18n="cat.traditional">Traditional Wear</a></li>
+          <li><a onclick="navigate('shop')" data-i18n="cat.party">Party Wear</a></li>
+          <li><a onclick="navigate('shop')" data-i18n="cat.suits">Suits</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.company">Company</h4>
+        <ul>
+          <li><a onclick="navigate('about')" data-i18n="nav.about">About</a></li>
+          <li><a onclick="navigate('contact')" data-i18n="nav.contact">Contact</a></li>
+          <li><a href="#" data-i18n="footer.careers">Careers</a></li>
+          <li><a href="#" data-i18n="footer.press">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.support">Support</h4>
+        <ul>
+          <li><a href="#" data-i18n="footer.faq">FAQ</a></li>
+          <li><a href="#" data-i18n="footer.shipping">Shipping</a></li>
+          <li><a href="#" data-i18n="footer.returns">Returns</a></li>
+          <li><a href="#" data-i18n="footer.privacy">Privacy Policy</a></li>
+          <li><a href="#" data-i18n="footer.terms">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Kostumia. <span data-i18n="footer.rights">All rights reserved.</span></div>
+      <div data-i18n="footer.made">Made with care for sustainable fashion.</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ AUTH MODAL ============ -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('authModal')">✕</button>
+    <div class="modal-header">
+      <h2 id="authTitle" data-i18n="auth.welcome">Welcome to Kostumia</h2>
+      <p id="authSubtitle" data-i18n="auth.signInSub">Sign in to continue</p>
+    </div>
+    <div class="modal-body">
+      <div class="form-tabs">
+        <div class="form-tab active" onclick="switchAuthTab('login',this)" data-i18n="auth.login">Sign In</div>
+        <div class="form-tab" onclick="switchAuthTab('register',this)" data-i18n="auth.register">Register</div>
+      </div>
+      <form id="loginForm" onsubmit="login(event)">
+        <div class="form-group"><label class="form-label" data-i18n="auth.email">Email</label><input type="email" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-i18n="auth.password">Password</label><input type="password" class="form-input" required></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;font-size:13px">
+          <label style="display:flex;align-items:center;gap:6px;cursor:pointer"><input type="checkbox"> <span data-i18n="auth.remember">Remember me</span></label>
+          <span class="form-link" onclick="showToast(t('auth.forgotSent'),'info')" data-i18n="auth.forgot">Forgot password?</span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%" data-i18n="auth.loginBtn">Sign In</button>
+        <div style="text-align:center;margin-top:20px;font-size:13px;color:var(--gray)">
+          <span data-i18n="auth.demo">Demo:</span> <span class="form-link" onclick="fillDemo('buyer')">buyer@demo.com</span> · <span class="form-link" onclick="fillDemo('seller')">seller@demo.com</span> · <span class="form-link" onclick="fillDemo('admin')">admin@demo.com</span>
+        </div>
+      </form>
+      <form id="registerForm" style="display:none" onsubmit="register(event)">
+        <div class="form-group"><label class="form-label" data-i18n="auth.name">Full Name</label><input type="text" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-i18n="auth.email">Email</label><input type="email" class="form-input" required></div>
+        <div class="form-group"><label class="form-label" data-i18n="auth.password">Password</label><input type="password" class="form-input" required minlength="6"></div>
+        <div class="form-group"><label class="form-label" data-i18n="auth.accountType">Account Type</label>
+          <select class="form-select"><option data-i18n="auth.buyer">Buyer</option><option data-i18n="auth.seller">Seller</option><option data-i18n="auth.both">Both</option></select>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%" data-i18n="auth.registerBtn">Create Account</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PRODUCT MODAL ============ -->
+<div class="modal-overlay" id="productModal">
+  <div class="modal modal-xl">
+    <button class="modal-close" onclick="closeModal('productModal')">✕</button>
+    <div id="productContent"></div>
+  </div>
+</div>
+
+<!-- ============ TOAST CONTAINER ============ -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+/* ============ TRANSLATIONS ============ */
+const translations = {
+  en: {
+    'nav.home':'Home','nav.shop':'Shop','nav.sell':'Sell','nav.about':'About','nav.contact':'Contact','nav.login':'Sign In',
+    'hero.eyebrow':'Sustainable Fashion','hero.title':'Give Your Outfit a <em>Second Life</em>','hero.subtitle':'Buy and sell once-worn occasion wear with ease. Save money while promoting sustainable fashion.',
+    'hero.cta1':'Shop Now','hero.cta2':'Sell Your Outfit','hero.stat1':'Happy Customers','hero.stat2':'Outfits Listed','hero.stat3':'Satisfaction','hero.scroll':'Scroll',
+    'featured.eyebrow':'Curated Selection','featured.title':'Featured Listings','featured.subtitle':'Hand-picked occasion wear, ready for their next celebration.','featured.viewAll':'View All Listings',
+    'cat.eyebrow':'Browse by Style','cat.title':'Shop Categories','cat.subtitle':'Find the perfect outfit for every special moment.',
+    'cat.wedding':'Wedding Dresses','cat.bridesmaid':'Bridesmaid Dresses','cat.suits':'Suits','cat.traditional':'Traditional Wear','cat.graduation':'Graduation Outfits','cat.party':'Party Wear','cat.costumes':'Costumes','cat.shoes':'Shoes','cat.bags':'Bags','cat.accessories':'Accessories',
+    'how.eyebrow':'Simple Process','how.title':'How Kostumia Works','how.subtitle':'A seamless experience for buyers and sellers.',
+    'how.s1.title':'List Your Outfit','how.s1.desc':'Sellers submit their outfits with photos, details, and pricing.',
+    'how.s2.title':'We Review & Approve','how.s2.desc':'Our team verifies quality and uploads approved listings.',
+    'how.s3.title':'Buyers Shop Securely','how.s3.desc':'Customers purchase with confidence through our secure platform.',
+    'how.s4.title':'Get Paid','how.s4.desc':'We deduct a small commission and pay the rest to the seller.',
+    'why.eyebrow':'The Kostumia Promise','why.title':'Why Choose Kostumia','why.subtitle':'Built on trust, sustainability, and style.',
+    'why.c1.title':'Verified Quality','why.c1.desc':'Every listing is reviewed to ensure authenticity and condition.',
+    'why.c2.title':'Sustainable Fashion','why.c2.desc':'Give beautiful outfits a second life and reduce fashion waste.',
+    'why.c3.title':'Secure Payments','why.c3.desc':'Funds held safely until delivery is confirmed. Mobile money, cards, and bank transfers.',
+    'why.c4.title':'Fair Pricing','why.c4.desc':'Transparent commission. Sellers keep most of what they earn.',
+    'test.eyebrow':'Loved by Many','test.title':'What Our Customers Say',
+    'test.t1.text':'"I sold my wedding dress within a week! The process was simple and I got a fair price. Highly recommended."','test.t1.role':'Seller, Dar es Salaam',
+    'test.t2.text':'"Found a stunning bridesmaid dress at half the retail price. The quality was exactly as described. Amazing platform!"','test.t2.role':'Buyer, Nairobi',
+    'test.t3.text':'"I love that I can support sustainable fashion while looking elegant. The bilingual feature is a wonderful touch for our community."','test.t3.role':'Buyer, Mombasa',
+    'news.title':'Stay in Style','news.subtitle':'Subscribe for new listings, style tips, and exclusive offers.','news.placeholder':'your@email.com','news.btn':'Subscribe',
+    'footer.tagline':'Wear Once. Loved Again. Sustainable occasion wear for every celebration.',
+    'footer.shop':'Shop','footer.company':'Company','footer.support':'Support','footer.careers':'Careers','footer.press':'Press','footer.faq':'FAQ','footer.shipping':'Shipping','footer.returns':'Returns','footer.privacy':'Privacy Policy','footer.terms':'Terms & Conditions','footer.rights':'All rights reserved.','footer.made':'Made with care for sustainable fashion.',
+    'filter.search':'Search','filter.searchPh':'Search outfits...','filter.category':'Category','filter.all':'All','filter.size':'Size','filter.price':'Price Range','filter.p1':'Under $50','filter.p2':'$50 - $150','filter.p3':'$150 - $300','filter.p4':'Over $300','filter.condition':'Condition','filter.apply':'Apply Filters',
+    'cond.new':'Like New','cond.good':'Good','cond.fair':'Fair',
+    'shop.title':'All Outfits','shop.items':'items found',
+    'sort.featured':'Sort: Featured','sort.low':'Price: Low to High','sort.high':'Price: High to Low','sort.new':'Newest First',
+    'sell.title':'Sell Your Outfit','sell.subtitle':'Turn your once-worn occasion wear into cash. Simple, fast, and fair.',
+    'sell.photos':'Photos','sell.upload':'Click to upload photos','sell.uploadHint':'Up to 8 photos, JPG or PNG',
+    'sell.titleLabel':'Title','sell.titlePh':'e.g., Ivory Silk Wedding Gown','sell.desc':'Description','sell.descPh':'Describe the outfit, condition, and any special details...',
+    'sell.category':'Category','sell.selectCat':'Select category','sell.condition':'Condition','sell.size':'Size','sell.color':'Color','sell.colorPh':'e.g., Ivory, Gold',
+    'sell.original':'Original Price ($)','sell.selling':'Selling Price ($)','sell.location':'Location','sell.locationPh':'e.g., Dar es Salaam','sell.delivery':'Delivery Options',
+    'sell.pickup':'Pickup Only','sell.ship':'Shipping Available','sell.both':'Both',
+    'sell.note':'Note:','sell.noteText':'Kostumia charges a 15% commission on successful sales. You\'ll receive the remaining amount after the buyer confirms delivery.','sell.submit':'Submit for Review',
+    'about.title':'About Kostumia','about.subtitle':'Wear Once. Loved Again. / Vaa Mara Moja. Pendwa Tena.','about.story':'Our Story',
+    'about.p1':'Kostumia was born from a simple idea: beautiful occasion wear deserves more than one moment in the spotlight. Every wedding dress, graduation gown, and traditional outfit tells a story — and those stories shouldn\'t end after a single event.',
+    'about.p2':'We connect sellers who want to give their outfits a second life with buyers looking for quality, affordable occasion wear. It\'s sustainable fashion that celebrates culture, style, and community.',
+    'about.mission':'Our Mission','about.p3':'To make sustainable fashion accessible, elegant, and joyful — in both English and Kiswahili, for every community we serve.',
+    'contact.title':'Get in Touch','contact.subtitle':'We\'d love to hear from you.','contact.name':'Your Name','contact.email':'Email','contact.subject':'Subject','contact.message':'Message','contact.send':'Send Message',
+    'wish.title':'Your Wishlist','wish.subtitle':'Items you\'ve saved for later.','wish.empty':'Your wishlist is empty.','wish.browse':'Browse Listings',
+    'cart.title':'Shopping Cart','cart.empty':'Your cart is empty.','cart.browse':'Start Shopping','cart.subtotal':'Subtotal','cart.fee':'Service Fee','cart.total':'Total','cart.checkout':'Proceed to Checkout',
+    'dash.overview':'Overview','dash.listings':'My Listings','dash.orders':'Orders','dash.earnings':'Earnings','dash.messages':'Messages','dash.profile':'Profile','dash.logout':'Logout',
+    'dash.welcome':'Welcome back!','dash.welcomeSub':'Here\'s what\'s happening with your account.','dash.addListing':'+ Add Listing',
+    'dash.totalSales':'Total Sales','dash.activeListings':'Active Listings','dash.views':'Views','dash.rating':'Rating','dash.thisMonth':'this month','dash.new':'new','dash.basedOn':'Based on 42 reviews','dash.recent':'Recent Activity',
+    'dash.item':'Item','dash.type':'Type','dash.amount':'Amount','dash.status':'Status','dash.sale':'Sale','dash.listing':'Listing','dash.price':'Price','dash.actions':'Actions','dash.edit':'Edit','dash.orderId':'Order ID','dash.date':'Date',
+    'dash.myListings':'My Listings','dash.myListingsSub':'Manage your items for sale.','dash.orders':'Orders','dash.ordersSub':'Track your purchases and sales.',
+    'dash.earnings':'Earnings','dash.earningsSub':'Your sales and payouts.','dash.requestPayout':'Request Payout','dash.totalEarned':'Total Earned','dash.available':'Available','dash.commission':'Commission (15%)','dash.paidOut':'Paid Out',
+    'dash.messages':'Messages','dash.noMsg':'No messages yet.','dash.profile':'Profile','dash.profileSub':'Update your account details.','dash.changePhoto':'Change Photo','dash.save':'Save Changes',
+    'status.completed':'Completed','status.processing':'Processing','status.approved':'Approved','status.active':'Active','status.pending':'Pending','status.delivered':'Delivered','status.shipped':'Shipped',
+    'admin.overview':'Overview','admin.listings':'Listings','admin.users':'Users','admin.payouts':'Payouts','admin.settings':'Settings',
+    'admin.dashboard':'Admin Dashboard','admin.dashboardSub':'Platform overview and analytics.','admin.totalRevenue':'Total Revenue','admin.commission':'Commission Earned','admin.activeUsers':'Active Users','admin.pending':'Pending Approval','admin.needsReview':'Needs review',
+    'admin.manageListings':'Manage Listings','admin.manageUsers':'Manage Users','admin.managePayouts':'Manage Payouts','admin.platformSettings':'Platform Settings','admin.commissionRate':'Commission Rate (%)','admin.platformName':'Platform Name','admin.supportEmail':'Support Email',
+    'admin.approve':'Approve','admin.reject':'Reject','admin.remove':'Remove','admin.view':'View','admin.release':'Release','admin.role':'Role','admin.joined':'Joined','admin.method':'Method',
+    'auth.welcome':'Welcome to Kostumia','auth.signInSub':'Sign in to continue','auth.login':'Sign In','auth.register':'Register','auth.email':'Email','auth.password':'Password','auth.remember':'Remember me','auth.forgot':'Forgot password?','auth.loginBtn':'Sign In','auth.registerBtn':'Create Account',
+    'auth.name':'Full Name','auth.accountType':'Account Type','auth.buyer':'Buyer','auth.seller':'Seller','auth.both':'Both','auth.demo':'Demo:','auth.forgotSent':'Password reset link sent to your email.',
+    'pay.mobile':'Mobile Money','pay.bank':'Bank Transfer','pay.card':'Credit/Debit Card',
+    'toast.listingSubmitted':'Listing submitted for review!','toast.subscribed':'Subscribed successfully!','toast.messageSent':'Message sent! We\'ll reply soon.','toast.addedCart':'Added to cart','toast.addedWish':'Saved to wishlist','toast.removedWish':'Removed from wishlist','toast.loggedIn':'Welcome back!','toast.registered':'Account created!','toast.profileUpdated':'Profile updated','toast.settingsSaved':'Settings saved','toast.checkout':'Redirecting to checkout...',
+    'product.buy':'Buy Now','product.save':'Save','product.share':'Share','product.contact':'Contact Seller','product.description':'Description','product.details':'Details','product.shipping':'Shipping','product.similar':'Similar Items',
+    'product.condition':'Condition','product.size':'Size','product.color':'Color','product.location':'Location','product.category':'Category'
+  },
+  sw: {
+    'nav.home':'Nyumbani','nav.shop':'Duka','nav.sell':'Uza','nav.about':'Kuhusu','nav.contact':'Wasiliana','nav.login':'Ingia',
+    'hero.eyebrow':'Mtindo Endelevu','hero.title':'Ipe Mavazi Yako <em>Maisha ya Pili</em>','hero.subtitle':'Nunua na uza mavazi yaliyovaliwa mara moja kwa urahisi. Okoa fedha huku ukichangia mtindo endelevu.',
+    'hero.cta1':'Nunua Sasa','hero.cta2':'Uza Vazi Lako','hero.stat1':'Wateja Wenye Furaha','hero.stat2':'Mavazi Yaliyoorodheshwa','hero.stat3':'Kuridhika','hero.scroll':'Sogeza',
+    'featured.eyebrow':'Uteuzi Bora','featured.title':'Matangazo Yaliyochaguliwa','featured.subtitle':'Mavazi ya sherehe yaliyochaguliwa kwa uangalifu, tayari kwa sherehe yake ijayo.','featured.viewAll':'Tazama Yote',
+    'cat.eyebrow':'Tafuta kwa Mtindo','cat.title':'Kategoria za Duka','cat.subtitle':'Pata vazi kamili kwa kila tukio maalum.',
+    'cat.wedding':'Magauni ya Harusi','cat.bridesmaid':'Magauni ya Wasindikizaji','cat.suits':'Suti','cat.traditional':'Mavazi ya Asili','cat.graduation':'Mavazi ya Mahafali','cat.party':'Mavazi ya Sherehe','cat.costumes':'Kostumia','cat.shoes':'Viatu','cat.bags':'Mikoba','cat.accessories':'Vifaa vya Urembo',
+    'how.eyebrow':'Mchakato Rahisi','how.title':'Jinsi Kostumia Inavyofanya Kazi','how.subtitle':'Uzoefu wa laini kwa wanunuzi na wauzaji.',
+    'how.s1.title':'Orodhesha Vazi Lako','how.s1.desc':'Wauzaji wanawasilisha mavazi yao pamoja na picha, maelezo, na bei.',
+    'how.s2.title':'Tunakagua na Kupitisha','how.s2.desc':'Timu yetu inathibitisha ubora na kupakia matangazo yaliyopitishwa.',
+    'how.s3.title':'Wanunuzi Wanunua kwa Usalama','how.s3.desc':'Wateja wanunua kwa ujasiri kupitia jukwaa letu salama.',
+    'how.s4.title':'Pata Malipo','how.s4.desc':'Tunatoa kamisheni ndogo na kumlipa muuzaji kiasi kilichobaki.',
+    'why.eyebrow':'Ahadi ya Kostumia','why.title':'Kwa Nini Uchague Kostumia','why.subtitle':'Imejengwa juu ya uaminifu, uendelevu, na mtindo.',
+    'why.c1.title':'Ubora Uliothibitishwa','why.c1.desc':'Kila tangazo linakaguliwa ili kuhakikisha uhalisi na hali.',
+    'why.c2.title':'Mtindo Endelevu','why.c2.desc':'Ipe mavazi mazuri maisha ya pili na upunguze taka za mitindo.',
+    'why.c3.title':'Malipo Salama','why.c3.desc':'Fedha zinashikiliwa kwa usalama hadi uthibitisho wa ujauzito. Pesa za simu, kadi, na benki.',
+    'why.c4.title':'Bei ya Haki','why.c4.desc':'Kamisheni wazi. Wauzaji wanabaki na sehemu kubwa ya wanayopata.',
+    'test.eyebrow':'Wapendwa na Wengi','test.title':'Wateja Wanasema Nini',
+    'test.t1.text':'"Niliuza gauni langu la harusi ndani ya wiki! Mchakato ulikuwa rahisi na nilipata bei ya haki. Ninapendekeza sana."','test.t1.role':'Muuzaji, Dar es Salaam',
+    'test.t2.text':'"Nilipata gauni zuri la msindikizaji kwa nusu ya bei ya rejareja. Ubora ulikuwa sawa na ulivyoelezwa. Jukwaa zuri!"','test.t2.role':'Mnunuzi, Nairobi',
+    'test.t3.text':'"Ninapenda kwamba naweza kuunga mkono mtindo endelevu huku nikionekana kifahari. Huduma ya lugha mbili ni kitu kizuri kwa jamii yetu."','test.t3.role':'Mnunuzi, Mombasa',
+    'news.title':'Baki kwa Mtindo','news.subtitle':'Jisajili kwa matangazo mapya, vidokezo vya mtindo, na ofa maalum.','news.placeholder':'barua@pepe.yako','news.btn':'Jisajili',
+    'footer.tagline':'Vaa Mara Moja. Pendwa Tena. Mavazi ya sherehe endelevu kwa kila sherehe.',
+    'footer.shop':'Duka','footer.company':'Kampuni','footer.support':'Msaada','footer.careers':'Kazi','footer.press':'Habari','footer.faq':'Maswali','footer.shipping':'Usafirishaji','footer.returns':'Urudishaji','footer.privacy':'Sera ya Faragha','footer.terms':'Sheria na Masharti','footer.rights':'Haki zote zimehifadhiwa.','footer.made':'Imetengenezwa kwa upendo kwa mtindo endelevu.',
+    'filter.search':'Tafuta','filter.searchPh':'Tafuta mavazi...','filter.category':'Kategoria','filter.all':'Yote','filter.size':'Ukubwa','filter.price':'Kiwango cha Bei','filter.p1':'Chini ya $50','filter.p2':'$50 - $150','filter.p3':'$150 - $300','filter.p4':'Zaidi ya $300','filter.condition':'Hali','filter.apply':'Tumia Vichujio',
+    'cond.new':'Kama Mpya','cond.good':'Nzuri','cond.fair':'Wastani',
+    'shop.title':'Mavazi Yote','shop.items':'vipengee vilivyopatikana',
+    'sort.featured':'Panga: Vilivyochaguliwa','sort.low':'Bei: Chini hadi Juu','sort.high':'Bei: Juu hadi Chini','sort.new':'Mapya Kwanza',
+    'sell.title':'Uza Vazi Lako','sell.subtitle':'Badilisha mavazi yako yaliyovaliwa mara moja kuwa pesa. Rahisi, haraka, na ya haki.',
+    'sell.photos':'Picha','sell.upload':'Bofya kupakia picha','sell.uploadHint':'Hadi picha 8, JPG au PNG',
+    'sell.titleLabel':'Kichwa','sell.titlePh':'k.m., Gauni la Harusi la Hariri','sell.desc':'Maelezo','sell.descPh':'Eleza vazi, hali, na maelezo yoyote maalum...',
+    'sell.category':'Kategoria','sell.selectCat':'Chagua kategoria','sell.condition':'Hali','sell.size':'Ukubwa','sell.color':'Rangi','sell.colorPh':'k.m., Nyeupe, Dhahabu',
+    'sell.original':'Bei ya Awali ($)','sell.selling':'Bei ya Kuuza ($)','sell.location':'Mahali','sell.locationPh':'k.m., Dar es Salaam','sell.delivery':'Chaguzi za Uwasilishaji',
+    'sell.pickup':'Chukua Mwenyewe','sell.ship':'Usafirishaji Upo','sell.both':'Zote Mbili',
+    'sell.note':'Kumbuka:','sell.noteText':'Kostumia inatoa kamisheni ya 15% kwenye mauzo yaliyofanikiwa. Utapata kiasi kilichobaki baada ya mnunuzi kuthibitisha ujauzito.','sell.submit':'Wasilisha kwa Ukaguzi',
+    'about.title':'Kuhusu Kostumia','about.subtitle':'Vaa Mara Moja. Pendwa Tena. / Wear Once. Loved Again.','about.story':'Hadithi Yetu',
+    'about.p1':'Kostumia ilizaliwa kutoka kwa wazo rahisi: mavazi mazuri ya sherehe yanastahili zaidi ya wakati mmoa kwenye jukwaa. Kila gauni la harusi, la mahafali, na la asili lina simulizi — na simulizi hizo hazipaswi kuisha baada ya tukio moja.',
+    'about.p2':'Tunaunganisha wauzaji wanaotaka kuipa mavazi yao maisha ya pili na wanunuzi wanaotafuta mavazi ya sherehe yenye ubora na bei nafuu. Ni mtindo endelevu unaosherehekea utamaduni, mtindo, na jamii.',
+    'about.mission':'Dhamira Yetu','about.p3':'Kufanya mtindo endelevu upatikane, wa kifahari, na wenye furaha — kwa Kiingereza na Kiswahili, kwa kila jamii tunayohudumia.',
+    'contact.title':'Wasiliana Nasi','contact.subtitle':'Tungependa kusikia kutoka kwako.','contact.name':'Jina Lako','contact.email':'Barua Pepe','contact.subject':'Mada','contact.message':'Ujumbe','contact.send':'Tuma Ujumbe',
+    'wish.title':'Orodha Yako ya Mapenzi','wish.subtitle':'Vipengee ulivyohifadhi kwa baadaye.','wish.empty':'Orodha yako ya mapenzi iko tupu.','wish.browse':'Tazama Matangazo',
+    'cart.title':'Kikapu cha Ununuzi','cart.empty':'Kikapu chako kiko tupu.','cart.browse':'Anza Kununua','cart.subtotal':'Jumla Ndogo','cart.fee':'Ada ya Huduma','cart.total':'Jumla','cart.checkout':'Endelea Kulipa',
+    'dash.overview':'Muhtasari','dash.listings':'Matangazo Yangu','dash.orders':'Maagizo','dash.earnings':'Mapato','dash.messages':'Ujumbe','dash.profile':'Wasifu','dash.logout':'Toka',
+    'dash.welcome':'Karibu tena!','dash.welcomeSub':'Hivi ndivyo vinavyotokea kwenye akaunti yako.','dash.addListing':'+ Ongeza Tangazo',
+    'dash.totalSales':'Mauzo Yote','dash.activeListings':'Matangazo Hai','dash.views':'Mitazamo','dash.rating':'Ukadiriaji','dash.thisMonth':'mwezi huu','dash.new':'mpya','dash.basedOn':'Kulingana na hakiki 42','dash.recent':'Shughuli za Hivi Karibuni',
+    'dash.item':'Kipengee','dash.type':'Aina','dash.amount':'Kiasi','dash.status':'Hali','dash.sale':'Uuzaji','dash.listing':'Tangazo','dash.price':'Bei','dash.actions':'Vitendo','dash.edit':'Hariri','dash.orderId':'Nambari ya Agizo','dash.date':'Tarehe',
+    'dash.myListings':'Matangazo Yangu','dash.myListingsSub':'Simamia vipengee vyako vya kuuza.','dash.orders':'Maagizo','dash.ordersSub':'Fuatilia ununuzi na mauzo yako.',
+    'dash.earnings':'Mapato','dash.earningsSub':'Mauzo na malipo yako.','dash.requestPayout':'Omba Malipo','dash.totalEarned':'Jumla Iliyopatikana','dash.available':'Inayopatikana','dash.commission':'Kamisheni (15%)','dash.paidOut':'Imelipwa',
+    'dash.messages':'Ujumbe','dash.noMsg':'Hakuna ujumbe bado.','dash.profile':'Wasifu','dash.profileSub':'Sasisha maelezo ya akaunti yako.','dash.changePhoto':'Badilisha Picha','dash.save':'Hifadhi Mabadiliko',
+    'status.completed':'Imekamilika','status.processing':'Inashughulikiwa','status.approved':'Imepitishwa','status.active':'Hai','status.pending':'Inasubiri','status.delivered':'Imewasishwa','status.shipped':'Imetumwa',
+    'admin.overview':'Muhtasari','admin.listings':'Matangazo','admin.users':'Watumiaji','admin.payouts':'Malipo','admin.settings':'Mipangilio',
+    'admin.dashboard':'Dashibodi ya Msimamizi','admin.dashboardSub':'Muhtasari na uchanganuzi wa jukwaa.','admin.totalRevenue':'Mapato Yote','admin.commission':'Kamisheni Iliyopatikana','admin.activeUsers':'Watumiaji Hai','admin.pending':'Inasubiri Kupitishwa','admin.needsReview':'Inahitaji ukaguzi',
+    'admin.manageListings':'Simamia Matangazo','admin.manageUsers':'Simamia Watumiaji','admin.managePayouts':'Simamia Malipo','admin.platformSettings':'Mipangilio ya Jukwaa','admin.commissionRate':'Kiwango cha Kamisheni (%)','admin.platformName':'Jina la Jukwaa','admin.supportEmail':'Barua Pepe ya Msaada',
+    'admin.approve':'Pitisha','admin.reject':'Kataa','admin.remove':'Ondoa','admin.view':'Tazama','admin.release':'Toa','admin.role':'Jukumu','admin.joined':'Alijiunga','admin.method':'Njia',
+    'auth.welcome':'Karibu Kostumia','auth.signInSub':'Ingia ili kuendelea','auth.login':'Ingia','auth.register':'Jisajili','auth.email':'Barua Pepe','auth.password':'Nenosiri','auth.remember':'Nikumbuke','auth.forgot':'Umesahau nenosiri?','auth.loginBtn':'Ingia','auth.registerBtn':'Fungua Akaunti',
+    'auth.name':'Jina Kamili','auth.accountType':'Aina ya Akaunti','auth.buyer':'Mnunuzi','auth.seller':'Muuzaji','auth.both':'Wote','auth.demo':'Mfano:','auth.forgotSent':'Kiungo cha kubadilisha nenosiri kimetumwa kwa barua pepe yako.',
+    'pay.mobile':'Pesa za Simu','pay.bank':'Uhamisho wa Benki','pay.card':'Kadi ya Mkopo/Debit',
+    'toast.listingSubmitted':'Tangazo limewasilishwa kwa ukaguzi!','toast.subscribed':'Umejislamilisha!','toast.messageSent':'Ujumbe umetumwa! Tutajibu hivi karibuni.','toast.addedCart':'Imeongezwa kwenye kikapu','toast.addedWish':'Imehifadhiwa kwenye orodha','toast.removedWish':'Imeondolewa kwenye orodha','toast.loggedIn':'Karibu tena!','toast.registered':'Akaunti imeundwa!','toast.profileUpdated':'Wasifu umesasishwa','toast.settingsSaved':'Mipangilio imehifadhiwa','toast.checkout':'Inaelekeza kwenye malipo...',
+    'product.buy':'Nunua Sasa','product.save':'Hifadhi','product.share':'Shiriki','product.contact':'Wasiliana na Muuzaji','product.description':'Maelezo','product.details':'Maelezo','product.shipping':'Usafirishaji','product.similar':'Vipengee Vinavyofanana',
+    'product.condition':'Hali','product.size':'Ukubwa','product.color':'Rangi','product.location':'Mahali','product.category':'Kategoria'
+  }
+};
+
+let currentLang = localStorage.getItem('kostumiaLang') || 'en';
+
+function t(key){ return translations[currentLang][key] || translations.en[key] || key; }
+
+function applyTranslations(){
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(translations[currentLang][key]) el.textContent = translations[currentLang][key];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-html');
+    if(translations[currentLang][key]) el.innerHTML = translations[currentLang][key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-ph');
+    if(translations[currentLang][key]) el.placeholder = translations[currentLang][key];
+  });
+  document.documentElement.lang = currentLang === 'en' ? 'en' : 'sw';
+  document.getElementById('langEn').classList.toggle('active', currentLang === 'en');
+  document.getElementById('langSw').classList.toggle('active', currentLang === 'sw');
+}
+
+function toggleLang(){
+  currentLang = currentLang === 'en' ? 'sw' : 'en';
+  localStorage.setItem('kostumiaLang', currentLang);
+  applyTranslations();
+  renderListings();
+  renderCategories();
+  renderWishlist();
+  renderCart();
+}
+
+/* ============ DATA ============ */
+const listings = [
+  {id:1,title:'Ivory Silk Wedding Gown',cat:'wedding',price:280,original:1200,size:'M',color:'Ivory',condition:'Like New',location:'Dar es Salaam',rating:4.9,reviews:24,seller:'Amina M.',featured:true,img:'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=600&q=80',imgs:['https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=800&q=80','https://images.unsplash.com/photo-1591604466107-ec97de577aff?w=800&q=80','https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80','https://images.unsplash.com/photo-1525258946800-98cfd641d0de?w=800&q=80'],desc:'Stunning ivory silk wedding gown worn only once for a beach ceremony. Excellent condition with no stains or tears. Comes with original garment bag.'},
+  {id:2,title:'Gold Bridesmaid Dress',cat:'bridesmaid',price:120,original:320,size:'S',color:'Gold',condition:'Like New',location:'Nairobi',rating:4.8,reviews:18,seller:'Joy K.',featured:true,img:'https://images.unsplash.com/photo-1595777457583-05e4a6e8a8c4?w=600&q=80',imgs:['https://images.unsplash.com/photo-1595777457583-05e4a6e8a8c4?w=800&q=80','https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&q=80','https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=800&q=80'],desc:'Elegant gold bridesmaid dress, size S. Worn once for a wedding. Perfect for any formal event.'},
+  {id:3,title:'Classic Black Tuxedo',cat:'suits',price:180,original:650,size:'L',color:'Black',condition:'Good',location:'Mombasa',rating:4.7,reviews:32,seller:'John K.',featured:true,img:'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80',imgs:['https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=800&q=80','https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=800&q=80'],desc:'Classic black tuxedo in excellent condition. Perfect for weddings, galas, and formal events.'},
+  {id:4,title:'Traditional Ankara Set',cat:'traditional',price:85,original:220,size:'M',color:'Multi',condition:'Like New',location:'Dar es Salaam',rating:5.0,reviews:15,seller:'Grace O.',featured:true,img:'https://images.unsplash.com/photo-1591369822996-89b1f8b6-7ffd?w=600&q=80',imgs:['https://images.unsplash.com/photo-1591369822996-89b6f8b6-7ffd?w=800&q=80'],desc:'Beautiful traditional Ankara set, handcrafted. Worn once for a cultural ceremony.'},
+  {id:5,title:'Emerald Evening Gown',cat:'party',price:220,original:580,size:'M',color:'Emerald',condition:'Like New',location:'Nairobi',rating:4.9,reviews:28,seller:'Sarah M.',featured:false,img:'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&q=80',imgs:['https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=800&q=80'],desc:'Stunning emerald evening gown, perfect for galas and special events.'},
+  {id:6,title:'Graduation Gown & Cap Set',cat:'graduation',price:45,original:120,size:'L',color:'Black',condition:'Good',location:'Mombasa',rating:4.6,reviews:12,seller:'David N.',featured:false,img:'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=600&q=80',imgs:['https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=800&q=80'],desc:'Complete graduation gown and cap set. Excellent condition.'},
+  {id:7,title:'Velvet Burgundy Party Dress',cat:'party',price:95,original:280,size:'S',color:'Burgundy',condition:'Good',location:'Dar es Salaam',rating:4.7,reviews:22,seller:'Fatuma O.',featured:false,img:'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=80',imgs:['https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=800&q=80'],desc:'Elegant velvet burgundy party dress. Perfect for holiday events.'},
+  {id:8,title:'Navy Blue Groom Suit',cat:'suits',price:240,original:780,size:'XL',color:'Navy',condition:'Like New',location:'Nairobi',rating:4.8,reviews:19,seller:'Peter M.',featured:false,img:'https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=600&q=80',imgs:['https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=800&q=80'],desc:'Premium navy blue groom suit. Worn once for a wedding.'},
+];
+
+const categories = [
+  {id:'wedding',img:'https://images.unsplash.com/photo-1594633313593-bab3825d0caf?w=600&q=80',count:234},
+  {id:'bridesmaid',img:'https://images.unsplash.com/photo-1595777457583-05e4a6e8a8c4?w=600&q=80',count:156},
+  {id:'suits',img:'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&q=80',count:189},
+  {id:'traditional',img:'https://images.unsplash.com/photo-1591369822996-89b6f8b6-7ffd?w=600&q=80',count:312},
+  {id:'graduation',img:'https://images.unsplash.com/photo-1523580846011-d3a5bc25702b?w=600&q=80',count:98},
+  {id:'party',img:'https://images.unsplash.com/photo-1566174053879-31528523f8ae?w=600&q=80',count:421},
+  {id:'costumes',img:'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=600&q=80',count:67},
+  {id:'shoes',img:'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&q=80',count:143},
+  {id:'bags',img:'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&q=80',count:89},
+  {id:'accessories',img:'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80',count:201}
+];
+
+/* ============ STATE ============ */
+let state = {
+  user: JSON.parse(localStorage.getItem('kostumiaUser') || 'null'),
+  wishlist: JSON.parse(localStorage.getItem('kostumiaWishlist') || '[]'),
+  cart: JSON.parse(localStorage.getItem('kostumiaCart') || '[]')
+};
+
+function saveState(){
+  localStorage.setItem('kostumiaUser', JSON.stringify(state.user));
+  localStorage.setItem('kostumiaWishlist', JSON.stringify(state.wishlist));
+  localStorage.setItem('kostumiaCart', JSON.stringify(state.cart));
+}
+
+/* ============ RENDERING ============ */
+function renderListings(){
+  const featured = listings.filter(l=>l.featured);
+  document.getElementById('featuredGrid').innerHTML = featured.map(renderListingCard).join('');
+  renderShop();
+}
+
+function renderListingCard(item){
+  const inWish = state.wishlist.includes(item.id);
+  const discount = Math.round((1 - item.price/item.original)*100);
+  return `
+    <div class="listing-card" onclick="openProduct(${item.id})">
+      <div class="listing-img">
+        <img src="${item.img}" alt="${item.title}" loading="lazy">
+        <span class="listing-tag gold">${t('cat.'+item.cat)}</span>
+        <button class="listing-fav ${inWish?'active':''}" onclick="event.stopPropagation();toggleWishlist(${item.id})" aria-label="Save">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+      <div class="listing-body">
+        <div class="listing-cat">${t('cat.'+item.cat)}</div>
+        <div class="listing-title">${item.title}</div>
+        <div class="listing-meta">
+          <span>⭐ ${item.rating} (${item.reviews})</span>
+          <span>${item.location}</span>
+        </div>
+        <div class="listing-price">
+          <span class="current">$${item.price}</span>
+          <span class="original">$${item.original}</span>
+          <span style="color:var(--success);font-size:12px;font-weight:600">-${discount}%</span>
+        </div>
+      </div>
+    </div>`;
+}
+
+function renderCategories(){
+  document.getElementById('categoriesGrid').innerHTML = categories.map(c=>`
+    <div class="category-card" onclick="filterByCategory('${c.id}')">
+      <img src="${c.img}" alt="${t('cat.'+c.id)}" loading="lazy">
+      <div class="category-overlay">
+        <h3>${t('cat.'+c.id)}</h3>
+        <span>${c.count} ${currentLang==='en'?'items':'vipengee'}</span>
+      </div>
+    </div>`).join('');
+}
+
+function renderShop(){
+  const grid = document.getElementById('shopGrid');
+  if(!grid) return;
+  grid.innerHTML = listings.map(renderListingCard).join('');
+  document.getElementById('resultCount').textContent = listings.length;
+}
+
+function renderWishlist(){
+  const items = listings.filter(l=>state.wishlist.includes(l.id));
+  const grid = document.getElementById('wishlistGrid');
+  const empty = document.getElementById('wishlistEmpty');
+  if(items.length === 0){ grid.innerHTML = ''; empty.style.display = 'block'; }
+  else { empty.style.display = 'none'; grid.innerHTML = items.map(renderListingCard).join(''); }
+  document.getElementById('wishlistCount').textContent = state.wishlist.length;
+}
+
+function renderCart(){
+  const items = listings.filter(l=>state.cart.includes(l.id));
+  const container = document.getElementById('cartItems');
+  const empty = document.getElementById('cartEmpty');
+  const summary = document.getElementById('cartSummary');
+  if(items.length === 0){
+    container.innerHTML = ''; empty.style.display = 'block'; summary.style.display = 'none';
+  } else {
+    empty.style.display = 'none'; summary.style.display = 'block';
+    container.innerHTML = items.map(item=>`
+      <div style="display:flex;gap:20px;padding:20px;border:1px solid var(--gray-light);border-radius:var(--radius-lg);margin-bottom:16px">
+        <img src="${item.img}" style="width:100px;height:130px;object-fit:cover;border-radius:var(--radius)">
+        <div style="flex:1">
+          <div style="font-family:'Playfair Display',serif;font-size:18px;margin-bottom:4px">${item.title}</div>
+          <div style="font-size:13px;color:var(--gray);margin-bottom:8px">${t('cat.'+item.cat)} · ${item.size} · ${item.condition}</div>
+          <div style="font-size:20px;font-weight:600">$${item.price}</div>
+        </div>
+        <button onclick="removeFromCart(${item.id})" style="color:var(--danger);font-size:13px;align-self:start">✕ ${currentLang==='en'?'Remove':'Ondoa'}</button>
+      </div>`).join('');
+    const subtotal = items.reduce((s,i)=>s+i.price,0);
+    const fee = Math.round(subtotal * 0.05);
+    document.getElementById('cartSubtotal').textContent = '$'+subtotal;
+    document.getElementById('cartFee').textContent = '$'+fee;
+    document.getElementById('cartTotal').textContent = '$'+(subtotal+fee);
+  }
+  document.getElementById('cartCount').textContent = state.cart.length;
+}
+
+/* ============ NAVIGATION ============ */
+function navigate(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const target = document.getElementById('page-'+page);
+  if(target) target.classList.add('active');
+  window.scrollTo(0,0);
+  document.getElementById('navLinks').classList.remove('mobile-open');
+  if(page==='wishlist') renderWishlist();
+  if(page==='cart') renderCart();
+  if(page==='dashboard' && !state.user){ openAuth(); return; }
+  if(page==='dashboard' && state.user){ updateDashUser(); }
+}
+
+function toggleMobileMenu(){ document.getElementById('navLinks').classList.toggle('mobile-open'); }
+
+/* ============ PRODUCT MODAL ============ */
+function openProduct(id){
+  const item = listings.find(l=>l.id===id);
+  if(!item) return;
+  const discount = Math.round((1-item.price/item.original)*100);
+  const inWish = state.wishlist.includes(item.id);
+  const similar = listings.filter(l=>l.cat===item.cat && l.id!==item.id).slice(0,4);
+  document.getElementById('productContent').innerHTML = `
+    <div class="product-layout" style="padding:24px">
+      <div class="product-gallery">
+        <div class="product-main-img"><img id="mainImg" src="${item.imgs[0]}" alt="${item.title}"></div>
+        <div class="product-thumbs">
+          ${item.imgs.map((img,i)=>`<div class="product-thumb ${i===0?'active':''}" onclick="changeImg('${img}',this)"><img src="${img}" alt=""></div>`).join('')}
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="breadcrumb">${t('nav.shop')} / ${t('cat.'+item.cat)}</div>
+        <h1>${item.title}</h1>
+        <div class="product-seller">
+          <div class="product-seller-avatar">${item.seller.split(' ').map(n=>n[0]).join('')}</div>
+          <div class="product-seller-info">
+            <strong>${item.seller}</strong>
+            <span>⭐ ${item.rating} · ${item.reviews} ${currentLang==='en'?'reviews':'hakiki'}</span>
+          </div>
+        </div>
+        <div class="product-price">
+          <span class="current">$${item.price}</span>
+          <span class="original">$${item.original}</span>
+          <span class="discount">-${discount}%</span>
+        </div>
+        <div class="product-specs">
+          <div class="product-spec"><span>${t('product.condition')}</span><span>${t('cond.'+item.condition.toLowerCase().replace(' ',''))||item.condition}</span></div>
+          <div class="product-spec"><span>${t('product.size')}</span><span>${item.size}</span></div>
+          <div class="product-spec"><span>${t('product.color')}</span><span>${item.color}</span></div>
+          <div class="product-spec"><span>${t('product.location')}</span><span>${item.location}</span></div>
+          <div class="product-spec"><span>${t('product.category')}</span><span>${t('cat.'+item.cat)}</span></div>
+        </div>
+        <div class="product-actions">
+          <button class="btn btn-primary" onclick="addToCart(${item.id})">${t('product.buy')}</button>
+          <button class="btn btn-ghost" onclick="toggleWishlist(${item.id});openProduct(${item.id})">${inWish?'♥':'♡'} ${t('product.save')}</button>
+        </div>
+        <div class="product-desc">
+          <h3>${t('product.description')}</h3>
+          <p>${item.desc}</p>
+        </div>
+      </div>
+    </div>
+    ${similar.length>0?`<div style="padding:0 24px 32px"><h3 style="font-size:24px;margin-bottom:20px">${t('product.similar')}</h3><div class="listings-grid">${similar.map(renderListingCard).join('')}</div></div>`:''}`;
+  document.getElementById('productModal').classList.add('active');
+}
+
+function changeImg(src,el){
+  document.getElementById('mainImg').src = src;
+  document.querySelectorAll('.product-thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+
+/* ============ MODALS ============ */
+function openAuth(){ document.getElementById('authModal').classList.add('active'); }
+function closeModal(id){ document.getElementById(id).classList.remove('active'); }
+
+function switchAuthTab(tab,el){
+  document.querySelectorAll('.form-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('loginForm').style.display = tab==='login'?'block':'none';
+  document.getElementById('registerForm').style.display = tab==='register'?'block':'none';
+}
+
+function fillDemo(type){
+  const emails = {buyer:'buyer@demo.com',seller:'seller@demo.com',admin:'admin@demo.com'};
+  const names = {buyer:'Demo Buyer',seller:'Demo Seller',admin:'Admin User'};
+  state.user = {name:names[type],email:emails[type],type:type,phone:'+255 700 000 000',location:'Dar es Salaam'};
+  saveState();
+  closeModal('authModal');
+  updateAuthUI();
+  showToast(t('toast.loggedIn'),'success');
+  if(type==='admin') navigate('admin');
+  else navigate('dashboard');
+}
+
+function login(e){
+  e.preventDefault();
+  const email = e.target.querySelector('input[type=email]').value;
+  const type = email.includes('admin')?'admin':email.includes('seller')?'seller':'buyer';
+  state.user = {name:'User',email:email,type:type,phone:'',location:''};
+  saveState();
+  closeModal('authModal');
+  updateAuthUI();
+  showToast(t('toast.loggedIn'),'success');
+  if(type==='admin') navigate('admin');
+  else navigate('dashboard');
+}
+
+function register(e){
+  e.preventDefault();
+  const form = e.target;
+  const name = form.querySelector('input[type=text]').value;
+  const email = form.querySelector('input[type=email]').value;
+  const type = form.querySelector('select').value.toLowerCase();
+  state.user = {name,email,type:type==='both'?'seller':type,phone:'',location:''};
+  saveState();
+  closeModal('authModal');
+  updateAuthUI();
+  showToast(t('toast.registered'),'success');
+  navigate('dashboard');
+}
+
+function logout(){
+  state.user = null;
+  saveState();
+  updateAuthUI();
+  navigate('home');
+  showToast(currentLang==='en'?'Logged out':'Umetoka','info');
+}
+
+function updateAuthUI(){
+  const btn = document.getElementById('authBtn');
+  if(state.user){
+    btn.textContent = state.user.name.split(' ')[0];
+    btn.onclick = ()=>navigate('dashboard');
+  } else {
+    btn.textContent = t('nav.login');
+    btn.onclick = openAuth;
+  }
+}
+
+function updateDashUser(){
+  if(!state.user) return;
+  document.getElementById('dashName').textContent = state.user.name;
+  document.getElementById('dashEmail').textContent = state.user.email;
+  document.getElementById('dashAvatar').textContent = state.user.name.split(' ').map(n=>n[0]).join('').toUpperCase();
+  document.getElementById('profileName').value = state.user.name;
+  document.getElementById('profileEmail').value = state.user.email;
+  document.getElementById('profilePhone').value = state.user.phone||'';
+  document.getElementById('profileLocation').value = state.user.location||'';
+  document.getElementById('profileAvatar').textContent = state.user.name.split(' ').map(n=>n[0]).join('').toUpperCase();
+}
+
+function showDashTab(tab,el){
+  document.querySelectorAll('#page-dashboard .dash-nav a').forEach(a=>a.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('[id^="dashTab-"]').forEach(t=>t.style.display='none');
+  document.getElementById('dashTab-'+tab).style.display='block';
+}
+
+function showAdminTab(tab,el){
+  document.querySelectorAll('#page-admin .dash-nav a').forEach(a=>a.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('[id^="adminTab-"]').forEach(t=>t.style.display='none');
+  document.getElementById('adminTab-'+tab).style.display='block';
+}
+
+/* ============ ACTIONS ============ */
+function toggleWishlist(id){
+  const idx = state.wishlist.indexOf(id);
+  if(idx>-1){ state.wishlist.splice(idx,1); showToast(t('toast.removedWish'),'info'); }
+  else { state.wishlist.push(id); showToast(t('toast.addedWish'),'success'); }
+  saveState();
+  renderListings();
+  renderWishlist();
+  document.getElementById('wishlistCount').textContent = state.wishlist.length;
+}
+
+function addToCart(id){
+  if(!state.cart.includes(id)){
+    state.cart.push(id);
+    saveState();
+    showToast(t('toast.addedCart'),'success');
+    document.getElementById('cartCount').textContent = state.cart.length;
+  }
+  closeModal('productModal');
+}
+
+function removeFromCart(id){
+  state.cart = state.cart.filter(i=>i!==id);
+  saveState();
+  renderCart();
+}
+
+function checkout(){
+  if(!state.user){ openAuth(); return; }
+  showToast(t('toast.checkout'),'info');
+  setTimeout(()=>{
+    state.cart = [];
+    saveState();
+    renderCart();
+    navigate('dashboard');
+  },1500);
+}
+
+function filterByCategory(cat){
+  navigate('shop');
+  setTimeout(()=>{
+    document.querySelectorAll('.filter-option input').forEach(i=>i.checked=false);
+    const cb = document.querySelector(`.filter-option input[value="${cat}"]`);
+    if(cb) cb.checked = true;
+    applyFilters();
+  },100);
+}
+
+function applyFilters(){
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const sort = document.getElementById('sortSelect').value;
+  let filtered = listings.filter(l=>{
+    if(search && !l.title.toLowerCase().includes(search)) return false;
+    return true;
+  });
+  if(sort==='low') filtered.sort((a,b)=>a.price-b.price);
+  if(sort==='high') filtered.sort((a,b)=>b.price-a.price);
+  if(sort==='new') filtered = filtered.reverse();
+  document.getElementById('shopGrid').innerHTML = filtered.map(renderListingCard).join('');
+  document.getElementById('resultCount').textContent = filtered.length;
+}
+
+function submitListing(e){
+  e.preventDefault();
+  if(!state.user){ openAuth(); return; }
+  showToast(t('toast.listingSubmitted'),'success');
+  e.target.reset();
+  navigate('dashboard');
+}
+
+function subscribeNewsletter(e){
+  e.preventDefault();
+  showToast(t('toast.subscribed'),'success');
+  e.target.reset();
+}
+
+function submitContact(e){
+  e.preventDefault();
+  showToast(t('toast.messageSent'),'success');
+  e.target.reset();
+}
+
+function updateProfile(e){
+  e.preventDefault();
+  state.user.name = document.getElementById('profileName').value;
+  state.user.email = document.getElementById('profileEmail').value;
+  state.user.phone = document.getElementById('profilePhone').value;
+  state.user.location = document.getElementById('profileLocation').value;
+  saveState();
+  updateDashUser();
+  updateAuthUI();
+  showToast(t('toast.profileUpdated'),'success');
+}
+
+function saveSettings(e){
+  e.preventDefault();
+  showToast(t('toast.settingsSaved'),'success');
+}
+
+/* ============ TOAST ============ */
+function showToast(msg,type='info'){
+  const container = document.getElementById('toastContainer');
+  const toast = document.createElement('div');
+  toast.className = 'toast '+type;
+  toast.innerHTML = `<span>${msg}</span>`;
+  container.appendChild(toast);
+  setTimeout(()=>{ toast.style.opacity='0'; toast.style.transform='translateX(100%)'; setTimeout(()=>toast.remove(),300); },3000);
+}
+
+/* ============ HEADER SCROLL ============ */
+window.addEventListener('scroll',()=>{
+  document.getElementById('header').classList.toggle('scrolled', window.scrollY>20);
+});
+
+/* ============ INIT ============ */
+applyTranslations();
+renderListings();
+renderCategories();
+renderWishlist();
+renderCart();
+updateAuthUI();
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(m=>{
+  m.addEventListener('click',e=>{ if(e.target===m) m.classList.remove('active'); });
+});
+</script>
+</body>
+</html>
